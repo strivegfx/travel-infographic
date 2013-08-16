@@ -32,7 +32,7 @@ $(document).ready(function(){
 				value: 200,
 				min: 100,
 				max: 300,
-				animate: 'true',
+				//animate: '500'
 			});
 
 		}, // end of genSld fnc

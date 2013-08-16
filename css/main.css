@@ -1,0 +1,168 @@
+@import url(http://fonts.googleapis.com/css?family=Merriweather:300italic,900italic);
+/* line 5, ../sass/main.scss */
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/* line 9, ../sass/main.scss */
+.clear-fix:after {
+  content: "";
+  display: table;
+  clear: both; }
+
+/* line 20, ../sass/main.scss */
+.module-container {
+  position: relative;
+  margin: 0 auto 0 auto;
+  font-family: arial;
+  width: 620px; }
+
+/* line 27, ../sass/main.scss */
+.sub-divider {
+  height: 12px;
+  background: url(../img/asset-sprite.png) 0 -54px no-repeat; }
+
+/* line 32, ../sass/main.scss */
+.slider-module {
+  background: url(../img/sky-bg.jpg) left top no-repeat; }
+  /* line 35, ../sass/main.scss */
+  .slider-module .title-container {
+    z-index: 0;
+    position: relative;
+    height: 300px; }
+    /* line 40, ../sass/main.scss */
+    .slider-module .title-container .title-choose, .slider-module .title-container .title-budget {
+      font-family: 'Merriweather', serif;
+      font-style: italic; }
+    /* line 45, ../sass/main.scss */
+    .slider-module .title-container .title-choose {
+      position: absolute;
+      left: 70px;
+      top: 40px;
+      font-weight: 300;
+      font-size: 60px;
+      color: #045255; }
+    /* line 54, ../sass/main.scss */
+    .slider-module .title-container .title-your {
+      z-index: -1;
+      position: absolute;
+      display: block;
+      left: 90px;
+      top: 90px;
+      text-transform: uppercase;
+      font-size: 20px;
+      text-align: center;
+      line-height: 75px;
+      width: 80px;
+      height: 80px;
+      color: white;
+      background-color: rgba(8, 175, 183, 0.3);
+      border: 3px solid white;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      -o-border-radius: 50%;
+      border-radius: 50%; }
+    /* line 72, ../sass/main.scss */
+    .slider-module .title-container .title-budget {
+      position: absolute;
+      left: 150px;
+      top: 90px;
+      font-weight: 900;
+      font-size: 120px;
+      color: rgba(8, 175, 183, 0.8);
+      text-shadow: 3px 3px 0 rgba(4, 82, 85, 0.5); }
+  /* line 83, ../sass/main.scss */
+  .slider-module .slider {
+    z-index: 0;
+    position: relative;
+    height: 10px;
+    width: 330px;
+    left: 50%;
+    margin: 0 0 0 -165px;
+    background: none;
+    border: none;
+    		/*&:hover{
+    
+    			.ui-slider-range{
+    				background: $pink;
+    			}
+    
+    			.ui-slider-handle{
+    				background: $pink;
+    				border: 2px solid $pinkDrk;
+    
+    				&:after{
+    					border: 2px solid $pinkDrk;
+    				}
+    			}
+    		}*/ }
+    /* line 93, ../sass/main.scss */
+    .slider-module .slider:before {
+      z-index: -1;
+      position: absolute;
+      display: block;
+      content: "";
+      left: -13px;
+      top: -11px;
+      width: 357px;
+      height: 32px;
+      background: url(../img/asset-sprite.png) 0 0 no-repeat; }
+    /* line 121, ../sass/main.scss */
+    .slider-module .slider .ui-slider-range {
+      height: 10px;
+      background: #08afb7; }
+    /* line 126, ../sass/main.scss */
+    .slider-module .slider .ui-slider-handle {
+      margin: -7px 0 0 -18px;
+      background: #08afb7;
+      width: 36px;
+      height: 36px;
+      border: 2px solid #045255;
+      cursor: pointer;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      -o-border-radius: 50%;
+      border-radius: 50%; }
+      /* line 135, ../sass/main.scss */
+      .slider-module .slider .ui-slider-handle:after {
+        position: absolute;
+        display: block;
+        content: "";
+        top: 25%;
+        left: 25%;
+        margin: -1px 0 0 -1px;
+        width: 18px;
+        height: 18px;
+        background-color: white;
+        border: 2px solid #045255;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+        border-radius: 50%; }
+  /* line 151, ../sass/main.scss */
+  .slider-module .slider-options {
+    text-transform: uppercase;
+    text-align: center;
+    list-style-type: none;
+    margin: 40px 0 0 0;
+    padding: 0; }
+    /* line 158, ../sass/main.scss */
+    .slider-module .slider-options li {
+      position: absolute;
+      display: block;
+      width: 100%;
+      font-size: 15px;
+      color: #045255; }
+      /* line 165, ../sass/main.scss */
+      .slider-module .slider-options li[data-val="100"] {
+        left: -165px; }
+      /* line 173, ../sass/main.scss */
+      .slider-module .slider-options li[data-val="300"] {
+        right: -165px; }
+  /* line 179, ../sass/main.scss */
+  .slider-module .sub-divider {
+    margin: 100px 0 0 0; }

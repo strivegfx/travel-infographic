@@ -1,0 +1,191 @@
+@import "compass/css3";
+
+@import url(http://fonts.googleapis.com/css?family=Merriweather:300italic,900italic);
+
+*, *:after, *:before {
+	@include box-sizing(border-box);
+}
+
+.clear-fix:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+$teal: #08AFB7;
+$tealDrk: darken($teal, 20%);
+$pink: #ED1E79;
+$pinkDrk: darken($pink, 20%);
+
+.module-container{
+	position: relative;
+	margin: 0 auto 0 auto;
+	font-family: arial;
+	width: 620px;
+}
+
+.sub-divider{
+	height: 12px;
+	background: url(../img/asset-sprite.png) 0 -54px no-repeat;
+}
+
+.slider-module{
+	background: url(../img/sky-bg.jpg) left top no-repeat;
+
+	.title-container{
+		z-index: 0;
+		position: relative;
+		height: 300px;
+
+		.title-choose, .title-budget{
+			font-family: 'Merriweather', serif;
+			font-style: italic;
+		}
+
+		.title-choose{
+			position: absolute;
+			left: 70px;
+			top: 40px;
+			font-weight: 300;
+			font-size: 60px;
+			color: $tealDrk;
+		}
+
+		.title-your{
+			z-index: -1;
+			position: absolute;
+			display: block;
+			left: 90px;
+			top: 90px;
+			text-transform: uppercase;
+			font-size: 20px;
+			text-align: center;
+			line-height: 75px;
+			width: 80px;
+			height: 80px;
+			color: white;
+			background-color: rgba($teal, 0.3);
+			border: 3px solid white;
+			@include border-radius(50%);
+		}
+
+		.title-budget{
+			position: absolute;
+			left: 150px;
+			top: 90px;
+			font-weight: 900;
+			font-size: 120px;
+			color: rgba($teal, 0.8);
+			@include text-shadow(3px 3px 0 rgba($tealDrk, 0.5));
+		}
+	}
+
+	.slider{
+		z-index: 0;
+		position: relative;
+		height: 10px;
+		width: 330px;
+		left: 50%;
+		margin: 0 0 0 -165px;
+		background: none;
+		border: none;
+
+		&:before{
+			z-index: -1;
+			position: absolute;
+			display: block;
+			content: "";
+			left: -13px;
+			top: -11px;
+			width: 357px;
+			height: 32px;
+			background: url(../img/asset-sprite.png) 0 0 no-repeat;
+		}
+
+		/*&:hover{
+
+			.ui-slider-range{
+				background: $pink;
+			}
+
+			.ui-slider-handle{
+				background: $pink;
+				border: 2px solid $pinkDrk;
+
+				&:after{
+					border: 2px solid $pinkDrk;
+				}
+			}
+		}*/
+
+		.ui-slider-range{
+			height: 10px;
+			background: $teal;
+		}
+
+		.ui-slider-handle{
+			margin: -7px 0 0 -18px;
+			background: $teal;
+			width: 36px;
+			height: 36px;
+			border: 2px solid $tealDrk;
+			cursor: pointer;
+			@include border-radius(50%);
+
+			&:after{
+				position: absolute;
+				display: block;
+				content: "";
+				top: 25%;
+				left: 25%;
+				margin: -1px 0 0 -1px;
+				width: 18px;
+				height: 18px;
+				background-color: white;
+				border: 2px solid $tealDrk;
+				@include border-radius(50%);
+			}
+		}	
+	}
+
+	.slider-options{
+		text-transform: uppercase;
+		text-align: center;
+		list-style-type: none;
+		margin: 40px 0 0 0;
+		padding: 0;
+
+		li{
+			position: absolute;
+			display: block;
+			width: 100%;
+			font-size: 15px;
+			color: $tealDrk;
+
+			&[data-val="100"]{
+				left: -165px;
+			}
+
+			&[data-val="200"]{
+
+			}
+
+			&[data-val="300"]{
+				right: -165px;
+			}
+		}
+	}
+
+	.sub-divider{
+		margin: 100px 0 0 0;
+	}
+
+} // end of slider module
+
+
+
+
+
+
+
+
