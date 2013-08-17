@@ -1,0 +1,169 @@
+.slider-module{
+	background: url(../img/sky-bg.jpg) left top no-repeat;
+
+	.content{
+		padding: 0 0 $pad + 30px 0;
+	}
+
+	.title-container{
+		z-index: 0;
+		position: relative;
+		height: 300px;
+
+		.title-choose, .title-budget{
+			font:{
+				family: 'Merriweather', serif;
+				style: italic;
+			}
+		}
+
+		.title-choose{
+			position: absolute;
+			left: 70px;
+			top: 40px;
+			font-weight: 300;
+			font-size: 60px;
+			color: $tealDrk;
+		}
+
+		.title-your{
+			z-index: -1;
+			position: absolute;
+			display: block;
+			left: 90px;
+			top: 90px;
+			text-transform: uppercase;
+			font-size: 20px;
+			text-align: center;
+			line-height: 75px;
+			width: 80px;
+			height: 80px;
+			color: white;
+			background-color: rgba($teal, 0.3);
+			border: 3px solid white;
+			@include border-radius(50%);
+		}
+
+		.title-budget{
+			position: absolute;
+			left: 150px;
+			top: 90px;
+			font-weight: 900;
+			font-size: 120px;
+			color: rgba($teal, 0.8);
+			@include text-shadow(3px 3px 0 rgba($tealDrk, 0.5));
+		}
+	}
+
+	.slider{
+		z-index: 0;
+		position: relative;
+		height: 10px;
+		width: 330px;
+		left: 50%;
+		margin: 0 0 0 -165px;
+		background: none;
+		border: none;
+
+		&:before{
+			z-index: -1;
+			@include pseudo;
+			left: -13px;
+			top: -11px;
+			width: 357px;
+			height: 32px;
+			background: url(../img/asset-sprite.png) 0 0 no-repeat;
+		}
+
+		.ui-slider-range{
+			@include transition(background $ani ease);
+			height: 10px;
+			background: $teal;
+
+			&.active{
+				background: $pink;
+			}
+		}
+
+		.ui-slider-handle{
+			@include transition(background $ani ease);
+			margin: -7px 0 0 -18px;
+			background: $teal;
+			width: 36px;
+			height: 36px;
+			border: 2px solid $tealDrk;
+			cursor: pointer;
+			@include border-radius(50%);
+
+			&.ui-state-active{
+				background: $pink;
+			}
+
+			&:after{
+				@include pseudo;
+				top: 25%;
+				left: 25%;
+				margin: -1px 0 0 -1px;
+				width: 18px;
+				height: 18px;
+				background-color: white;
+				border: 2px solid $tealDrk;
+				@include border-radius(50%);
+			}
+		}	
+	}
+
+	.slider-options{
+		text-transform: uppercase;
+		text-align: center;
+		list-style-type: none;
+		height: 50px;
+		margin: 0;
+		padding: 0;
+		//background: gray;
+
+		&.slide{
+
+			.active{
+
+				span{
+					color: $pink;
+				}
+			}
+		}
+
+		li{
+			@include transition(color $ani ease, padding $ani ease, font-size $ani ease);
+			display: block;
+			width: 26%;
+			padding: 30px 0 0 0;
+			font-size: 90%;
+			color: $tealDrk;
+			float: left;
+			cursor: pointer;
+
+			&.enter{
+				color: $pink;
+			}
+
+			&.active{
+				color: $teal !important;
+				padding: 29px 0 0 0 !important;
+				font-size: 110% !important;
+			}
+
+			&[data-val="100"]{
+				margin: 0 0 0 11%;
+			}
+
+			&[data-val="200"]{
+
+			}
+
+			&[data-val="300"]{
+
+			}
+		}
+	}
+
+} // end of slider module

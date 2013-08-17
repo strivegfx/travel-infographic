@@ -1,0 +1,110 @@
+.pie-module{
+	height: 700px;
+
+	.key{
+		text-transform: uppercase;
+		text-align: center;
+		list-style-type: none;
+		margin: 70px 0 0 0;
+		padding: 0;
+
+		li{
+			position: relative;
+			width: 25%;
+			float: left;
+
+			&:before, &:after{
+				@include pseudo;
+				@include border-radius(50%);
+				left: 50%;
+			}
+
+			&:before{
+				width: 36px;
+				height: 36px;
+				margin: -50px 0 0 -18px;
+			}
+
+			&:after{
+				width: 18px;
+				height: 18px;
+				background-color: white;
+				margin: -63px 0 0 -9px;
+			}
+
+			&.bed{
+				color: $grayDrk;
+
+				&:before{
+					background: $gray;
+					border: 2px solid $grayDrk;
+				}
+
+				&:after{
+					border: 2px solid $grayDrk;
+				}
+			}
+
+			&.attractions{
+				color: $pink;
+
+				&:before{
+					background: $pink;
+					border: 2px solid $pinkDrk;
+				}
+
+				&:after{
+					border: 2px solid $pinkDrk;
+				}
+			}
+
+			&.transport{
+				color: $sky;
+
+				&:before{
+					background: $sky;
+					border: 2px solid $skyDrk;
+				}
+
+				&:after{
+					border: 2px solid $skyDrk;
+				}
+			}
+
+			&.food{
+				color: $blue;
+
+				&:before{
+					background: $blue;
+					border: 2px solid $blueDrk;
+				}
+
+				&:after{
+					border: 2px solid $blueDrk;
+				}
+			}
+		}
+	}
+
+	.pie-chart{
+		float: left;
+		width: 310px;
+
+		.chart-container{
+			position: relative;
+
+			.price{
+				position: absolute;
+				left: 0;
+				top: 90px;
+				width: 100%;
+				text-align: center;
+
+			}
+
+			canvas{
+				margin: 0 0 0 55px;
+			}
+		}
+	}
+}
