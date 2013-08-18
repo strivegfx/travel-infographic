@@ -1,6 +1,7 @@
 @import "compass/css3";
 
 @import url(http://fonts.googleapis.com/css?family=Merriweather:300italic,900italic);
+@import url(http://fonts.googleapis.com/css?family=Josefin+Slab:400italic);
 
 *, *:after, *:before {
 	@include box-sizing(border-box);
@@ -31,10 +32,21 @@ $grayDrk: darken($gray, 20%);
 	content: "";
 }
 
-.module-container{
+.stuff-shell{
 	position: relative;
 	margin: 0 auto 0 auto;
-	font-family: arial;
+	width: 1500px;
+	padding: 145px 0 0 280px;
+	background:{
+		image: url(../img/stuff-shell.png);
+		repeat: no-repeat;
+	} 
+}
+
+.module-container{
+	position: relative;
+	//margin: 0 auto 0 auto;
+	font-family: arial, serif;
 	width: 620px;
 	color: $teal;
 }
@@ -83,8 +95,7 @@ $grayDrk: darken($gray, 20%);
 
 h2, h3{
 	font:{
-		family: 'Merriweather', serif;
-		size: 60px;
+		family: 'Merriweather';
 		style: italic;
 		weight: 300;
 	}
@@ -101,6 +112,14 @@ h3{
 	margin: 0 0 $pad / 2 0;
 }
 
+.description{
+	display: block;
+	font-size: 15px;
+	text-align: center;
+	color: $tealDrk;
+	margin: 0 $pad 0 $pad;
+}
+
 .sub-divider{
 	height: 12px;
 	background: url(../img/asset-sprite.png) 0 -54px no-repeat;
@@ -109,6 +128,7 @@ h3{
 
 @import "_slider.scss";
 @import "_pie.scss";
+@import "_slideshow.scss";
 
 
 

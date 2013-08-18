@@ -13,18 +13,32 @@ $(document).ready(function(){
 
 			$m.s.ani = 0.25; // the base animation speed for tweens
 
-			//$m.s.col = {
-			//	teal : #08AFB7,
-			//	tealDrk : 
-			//}
+			$m.s.col = {
+				teal : '#08AFB7',
+				tealDrk : '?',
+				pink : '#ED1E79',
+				pinkDrk : '?',
+				sky : '#3FA9F5',
+				skyDrk : '?',
+				blue : '#243751',
+				bueDrk : '?',
+				gray : '#CCCCCC',
+				grayDrk : '?'
+			};
 
 			$m.s.sld = $('.slider'); // slider container
-
 			$m.s.sldOpt = $m.s.sld.siblings('.slider-options'); // slider options container
 			$m.s.sldOptLi = $m.s.sldOpt.find('li'); // all slider options
 			$m.s.sldOpt100 = $m.s.sldOpt.find('li[data-val="100"]'); // slider option 100
 			$m.s.sldOpt200 = $m.s.sldOpt.find('li[data-val="200"]'); // slider option 200
 			$m.s.sldOpt300 = $m.s.sldOpt.find('li[data-val="300"]'); // slider option 300
+
+			$m.s.pieCht = {
+				pie1 : $('.pie-1').find('canvas').get(0).getContext("2d"),
+				pie2 : $('.pie-2').find('canvas').get(0).getContext("2d"),
+				pie3 : $('.pie-3').find('canvas').get(0).getContext("2d"),
+				pie4 : $('.pie-4').find('canvas').get(0).getContext("2d"),
+			};
 
 		}, // end of genSet
 
@@ -249,32 +263,33 @@ $(document).ready(function(){
 
 			var $data = [
 				{
-					value: 30,
-					color:"#F7464A"
+					value : 30,
+					color : $m.s.col.gray
 				},
 				{
 					value : 50,
-					color : "#E2EAE9"
+					color : $m.s.col.pink
 				},
 				{
 					value : 100,
-					color : "#D4CCC5"
+					color : $m.s.col.sky
 				},
 				{
 					value : 40,
-					color : "#949FB1"
-				},
-				{
-					value : 120,
-					color : "#4D5360"
+					color : $m.s.col.blue
 				}
-
 			];
 
-			var $pie1 = $('.chart-1').find('canvas').get(0).getContext("2d");
+			var $pie1 = $m.s.pieCht.pie1,
+				$pie2 = $m.s.pieCht.pie2,
+				$pie3 = $m.s.pieCht.pie3,
+				$pie4 = $m.s.pieCht.pie4;
 
 			//new Chart($ctx).Doughnut($data,options);
 			new Chart($pie1).Doughnut($data);
+			new Chart($pie2).Doughnut($data);
+			new Chart($pie3).Doughnut($data);
+			new Chart($pie4).Doughnut($data);
 
 		} // end of genPie fnc
 

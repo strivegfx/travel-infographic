@@ -1,0 +1,114 @@
+.slideshow-module{
+	
+	.slideshow-image{
+		position: relative;
+		width: 490px;
+		height: 154px;
+		background: gray;
+		margin: 0 0 0 65px;
+		border: 2px solid white;
+
+		&:after{
+			@include pseudo;
+			width: 80px;
+			height: 80px;
+			left: 0;
+			top: 0;
+			margin: -40px 0 0 -40px;
+			background: $teal;
+			border: 2px solid white;
+			@include border-radius(50%);
+		}
+
+		.image-clip{
+			position: relative;
+			overflow: hidden;
+
+			.rollover{
+				position: absolute;
+				margin: -50% 0 0 -50%;
+				width: 0;
+				height: 0;
+				background: rgba($teal, 0.5);
+				border: 2px solid white;
+				@include border-radius(50%);
+
+				&.active{
+					width: 860px;
+					height: 860px;
+				}
+			}
+
+			.image-container{
+				width: 1470px;
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+
+				li{
+					width: 490px;
+					height: 150px;
+					float: left;
+					background:{
+						image: url(../img/slideshow-temp.jpg);
+						repeat: no-repeat;
+						position: center center;
+					}
+				}
+			}
+		}
+	}
+
+	.slideshow-options{
+		position: relative;
+		list-style-type: none;
+		margin: -18px 0 0 0;
+		padding: 0;
+
+		li{
+			position: relative;
+			float: left;
+			width: 36px;
+			height: 36px;
+			background: white;
+			border: 2px solid $gray;
+			@include border-radius(50%);
+
+			&.active{
+				background: $teal;
+				border: 2px solid $tealDrk;
+				&:after{
+					width: 18px;
+					height: 18px;
+					background-color: white;
+					left: 7px;
+					top: 7px;
+					border: 2px solid $tealDrk;
+					@include pseudo;
+					@include border-radius(50%);
+				}
+			}
+
+			&[data-val="1"]{
+				margin: 0 0 0 246px;
+			}
+
+			&[data-val="2"]{
+				margin: 0 10px 0 10px;
+			}
+
+			&[data-val="3"]{
+				
+			}
+		}
+	}
+
+	.title{
+		display: block;
+		text:{
+			transform: uppercase;
+			align: center;
+		}
+		margin: $pad / 2 $pad 0 $pad;
+	}
+}

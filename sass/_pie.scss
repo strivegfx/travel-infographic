@@ -1,5 +1,4 @@
 .pie-module{
-	height: 700px;
 
 	.key{
 		text-transform: uppercase;
@@ -86,24 +85,34 @@
 		}
 	}
 
-	.pie-chart{
-		float: left;
-		width: 310px;
+	.chart-container{
 
-		.chart-container{
-			position: relative;
+		.pie-chart{
+			float: left;
+			width: 310px;
 
-			.price{
-				position: absolute;
-				left: 0;
-				top: 90px;
-				width: 100%;
-				text-align: center;
+			.chart-container{
+				position: relative;
 
-			}
+				.price{
+					position: absolute;
+					display: block;
+					font:{
+						family: 'Josefin Slab';
+						weight: 400;
+						size: 25px;
+						style: italic;
+					}
+					left: 0;
+					top: 85px;
+					width: 100%;
+					text-align: center;
 
-			canvas{
-				margin: 0 0 0 55px;
+				}
+
+				canvas{
+					margin: 0 0 0 55px;
+				}
 			}
 		}
 	}

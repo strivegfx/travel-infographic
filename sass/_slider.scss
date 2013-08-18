@@ -2,7 +2,7 @@
 	background: url(../img/sky-bg.jpg) left top no-repeat;
 
 	.content{
-		padding: 0 0 $pad + 30px 0;
+		padding: 0 0 $pad / 2 0;
 	}
 
 	.title-container{
@@ -12,7 +12,7 @@
 
 		.title-choose, .title-budget{
 			font:{
-				family: 'Merriweather', serif;
+				family: 'Merriweather';
 				style: italic;
 			}
 		}
@@ -163,6 +163,66 @@
 			&[data-val="300"]{
 
 			}
+		}
+	}
+
+	.description{
+		font-size: 15px;
+		text-align: center;
+		color: $tealDrk;
+		margin: 0 $pad $pad $pad;
+	}
+
+	.price-container{
+		position: relative;
+		text-align: center;
+		//background: gray;
+
+		&:before{
+			z-index: -2;
+			@include pseudo;
+			width: 280px;
+			height: 280px;
+			left: 50%;
+			top: -20%;
+			margin: 0 0 0 -140px;
+			background: $teal;
+			border: 2px solid $tealDrk;
+			@include border-radius(50%);
+		}
+
+		.price{
+			font: {
+				family: 'Josefin Slab';
+				weight: 400;
+				style: italic;
+			}
+			color: white;
+
+			.dollar{
+				font-size: 20px;
+			}
+
+			.number{
+				font-size: 60px;
+			}
+
+			.nzd{
+				font-size: 20px;
+				text-transform: uppercase;
+			}
+		}
+
+		.footer{
+			display: block;
+			font:{
+				family: 'Merriweather', serif;
+				size: 25px;
+				style: italic;
+				weight: 300;
+			}
+			color: $tealDrk;
+			margin: -20px 0 0 0;
 		}
 	}
 

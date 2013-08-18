@@ -23,6 +23,9 @@
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
 
+        <!-- place holder for mockup -->
+        <div class="stuff-shell">
+
 		<div class="module-container">
 
 			<div class="module slider-module">
@@ -44,9 +47,62 @@
 
 					<div class="sub-divider"></div>
 
+					<div class="description">
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat.
+					</div>
+
+					<div class="price-container">
+						<div class="price">
+							<span class="dollar">$</span><span class="number">300</span><span class="nzd">nzd</span>
+						</div>
+						<span class="footer">To spend per day</span>
+					</div>
+
 				</div> <!-- end of content -->
 
 			</div> <!-- end of slider-module -->
+
+			<div class="module slideshow-module">
+
+				<div class="content">
+
+					<h3>best beaches</h3>
+
+					<div class="slideshow-image">
+
+						<div class="image-clip">
+
+							<div class="rollover active"></div>
+
+							<ul class="image-container">
+
+								<li class="image-1"></li>
+								<li class="image-2"></li>
+								<li class="image-3"></li>
+
+							</ul>
+
+						</div>
+
+					</div>
+
+					<ul class="slideshow-options clear-fix">
+
+						<li class="active" data-val="1"></li>
+						<li data-val="2"></li>
+						<li data-val="3"></li>
+
+					</ul>
+
+					<span class="title">Paris</span>
+					<span class="description">Lorem ipsum dolor sit amet, consectetur adipisicing...</span>
+
+				</div> <!-- end of content -->
+
+			</div> <!-- end of slideshow-module -->
 
 			<div class="module pie-module">
 
@@ -63,13 +119,44 @@
 
 					<div class="sub-divider"></div>
 
-					<div class="pie-chart chart-1">
-						<h3>Bangkok</h3>
+					<div class="chart-container clear-fix">
 
-						<div class="chart-container">
-							<span class="price">$113.10</span>
-							<canvas width="200" height="200"></canvas>
+						<div class="pie-chart pie-1">
+							<h3>Bangkok</h3>
+
+							<div class="chart-container">
+								<span class="price">$113.10</span>
+								<canvas width="200" height="200"></canvas>
+							</div>
 						</div>
+
+						<div class="pie-chart pie-2">
+							<h3>Bangkok</h3>
+
+							<div class="chart-container">
+								<span class="price">$113.10</span>
+								<canvas width="200" height="200"></canvas>
+							</div>
+						</div>
+
+						<div class="pie-chart pie-3">
+							<h3>Bangkok</h3>
+
+							<div class="chart-container">
+								<span class="price">$113.10</span>
+								<canvas width="200" height="200"></canvas>
+							</div>
+						</div>
+
+						<div class="pie-chart pie-4">
+							<h3>Bangkok</h3>
+
+							<div class="chart-container">
+								<span class="price">$113.10</span>
+								<canvas width="200" height="200"></canvas>
+							</div>
+						</div>
+
 					</div>
 
 				</div> <!-- end of content -->
@@ -77,6 +164,9 @@
 			</div> <!-- end of pie-module -->
 
 		</div> <!-- end of module-container -->
+
+		<!-- place holder for mockup -->
+		</div> <!-- end of stuff-shell -->
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
