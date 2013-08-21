@@ -1,4 +1,31 @@
+// slider module
+
 .slideshow-module{
+	$imgWth: 490px; // image width
+
+	&[data-val="1"]{
+
+		.image-container{
+			left: $imgWth * 0;
+		}
+
+	}
+
+	&[data-val="2"]{
+
+		.image-container{
+			left: $imgWth * -1;
+		}
+
+	}
+
+	&[data-val="3"]{
+
+		.image-container{
+			left: $imgWth * -2;
+		}
+
+	}
 	
 	.slideshow-image{
 		position: relative;
@@ -7,6 +34,7 @@
 		background: gray;
 		margin: 0 0 0 65px;
 		border: 2px solid white;
+		cursor: pointer;
 
 		&:after{
 			@include pseudo;
@@ -20,26 +48,37 @@
 			@include border-radius(50%);
 		}
 
+		&.enter{
+
+			.rollover{
+				margin: -450px 0 0 -450px !important;
+				width: 900px !important;
+				height: 900px !important;
+			}
+		}
+
 		.image-clip{
 			position: relative;
 			overflow: hidden;
 
 			.rollover{
+				@include transition(width $ani ease, height $ani ease, margin $ani ease);
+				z-index: 1;
 				position: absolute;
-				margin: -50% 0 0 -50%;
-				width: 0;
-				height: 0;
+				left: 0;
+				top: 0;
+				margin: -100px 0 0 -100px;
+				width: 200px;
+				height: 200px;
 				background: rgba($teal, 0.5);
 				border: 2px solid white;
 				@include border-radius(50%);
-
-				&.active{
-					width: 860px;
-					height: 860px;
-				}
 			}
 
 			.image-container{
+				@include transition(left $ani ease);
+				z-index: 0;
+				position: relative;
 				width: 1470px;
 				list-style-type: none;
 				margin: 0;
@@ -60,32 +99,45 @@
 	}
 
 	.slideshow-options{
+		z-index: 3;
 		position: relative;
 		list-style-type: none;
 		margin: -18px 0 0 0;
 		padding: 0;
 
 		li{
+			@include transition(background $ani ease, border $ani ease);
 			position: relative;
 			float: left;
 			width: 36px;
 			height: 36px;
 			background: white;
 			border: 2px solid $gray;
+			cursor: pointer;
 			@include border-radius(50%);
 
-			&.active{
+			&:after{
+				@include transition(width $ani ease, height $ani ease, left $ani ease, top $ani ease, border $ani ease);
+				@include pseudo;
+				width: 0;
+				height: 0;
+				background-color: white;
+				left: 16px;
+				top: 16px;
+				border: 2px solid white;
+				@include border-radius(50%);
+			}
+
+			&.enter{
 				background: $teal;
 				border: 2px solid $tealDrk;
+
 				&:after{
 					width: 18px;
 					height: 18px;
-					background-color: white;
 					left: 7px;
 					top: 7px;
 					border: 2px solid $tealDrk;
-					@include pseudo;
-					@include border-radius(50%);
 				}
 			}
 

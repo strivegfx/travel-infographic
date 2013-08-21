@@ -166,16 +166,10 @@
 		}
 	}
 
-	.description{
-		font-size: 15px;
-		text-align: center;
-		color: $tealDrk;
-		margin: 0 $pad $pad $pad;
-	}
-
 	.price-container{
 		position: relative;
 		text-align: center;
+		padding: $pad 0 0 0;
 		//background: gray;
 
 		&:before{
@@ -184,7 +178,7 @@
 			width: 280px;
 			height: 280px;
 			left: 50%;
-			top: -20%;
+			top: 20%;
 			margin: 0 0 0 -140px;
 			background: $teal;
 			border: 2px solid $tealDrk;

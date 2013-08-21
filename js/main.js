@@ -26,12 +26,22 @@ $(document).ready(function(){
 				grayDrk : '?'
 			};
 
-			$m.s.sld = $('.slider'); // slider container
-			$m.s.sldOpt = $m.s.sld.siblings('.slider-options'); // slider options container
-			$m.s.sldOptLi = $m.s.sldOpt.find('li'); // all slider options
-			$m.s.sldOpt100 = $m.s.sldOpt.find('li[data-val="100"]'); // slider option 100
-			$m.s.sldOpt200 = $m.s.sldOpt.find('li[data-val="200"]'); // slider option 200
-			$m.s.sldOpt300 = $m.s.sldOpt.find('li[data-val="300"]'); // slider option 300
+			$m.s.prc = {
+				'100' : 100,
+				'200' : 300,
+				'300' : 700
+			};
+
+			$m.s.sld = {}; // slider reference shell
+				$m.s.sld.main = $('.slider'); // slider container
+				$m.s.sld.opt = $m.s.sld.main.siblings('.slider-options'); // slider options container
+				$m.s.sld.optLi = $m.s.sld.opt.find('li'); // all slider options
+				$m.s.sld.opt100 = $m.s.sld.opt.find('li[data-val="100"]'); // slider option 100
+				$m.s.sld.opt200 = $m.s.sld.opt.find('li[data-val="200"]'); // slider option 200
+				$m.s.sld.opt300 = $m.s.sld.opt.find('li[data-val="300"]'); // slider option 300
+				$m.s.sld.prcNum = $m.s.sld.main.siblings('.price-container').find('.price .number'); // price number
+
+			$m.s.shw = $('.slideshow-module');
 
 			$m.s.pieCht = {
 				pie1 : $('.pie-1').find('canvas').get(0).getContext("2d"),
@@ -53,7 +63,7 @@ $(document).ready(function(){
 
 		genSld : function(){ // generate slider...
 
-			var $sld = $m.s.sld; // get slider reference from settings...
+			var $sld = $m.s.sld.main; // get slider reference from settings...
 
 			// create slider...
 			$sld.slider({
@@ -65,32 +75,32 @@ $(document).ready(function(){
 			});
 
 			// create slider dom references after slider has been created...
-			$m.s.sldBar = $sld.find('.ui-slider-range'); // slider bar
+			$m.s.sld.bar = $sld.find('.ui-slider-range'); // slider bar
 
 		}, // end of genSld fnc
 
 		uiLst : function(){ // create UI listeners
 
-			var $sld = $m.s.sld; // get slider reference from settings...
+			var $sld = $m.s.sld.main; // get slider reference from settings...
 
 			$sld
 				.on('slidestart', function(){
 
-					$m.uiAct.sld.slidestart(); // run the UI action...					
+					$m.uiAct.sld.ui.slidestart(); // run the UI action...					
 
 				})
 				.on('slide', function(){
 
 					var $curPos = $sld.slider('value'); // CURRENT handle position
 
-					$m.uiAct.sld.slide($curPos); // run the UI action...					
+					$m.uiAct.sld.ui.slide($curPos, false); // run the UI action...					
 
 				})
 				.on('slidestop', function(){
 
 					var $curPos = $sld.slider('value'); // CURRENT handle position
 
-					$m.uiAct.sld.slidestop($curPos); // run the UI action...					
+					$m.uiAct.sld.ui.slidestop($curPos); // run the UI action...					
 
 				})
 				.on('mouseenter', function(){
@@ -104,158 +114,242 @@ $(document).ready(function(){
 
 				});
 
-			var $sldOpt = $m.s.sldOpt; // get slider-options reference from settings...
+			var $sldOpt = $m.s.sld.opt; // get slider-options reference from settings...
 
 			$sldOpt
 				.on('click', 'li', function(){
 
 					var $curPos = $sld.slider('value'); // CURRENT handle position
 
-					$m.uiAct.sldOpt.onclick($(this), $curPos);
+					$m.uiAct.sld.opt.onclick($(this), $curPos);
 
 				})
 				.on('mouseenter', 'li', function(){
 
-					$m.uiAct.sldOpt.mouseenter($(this));
+					$m.uiAct.sld.opt.mouseenter($(this));
 
 				})
 				.on('mouseleave', 'li', function(){
 
-					$m.uiAct.sldOpt.mouseleave($(this));
+					$m.uiAct.sld.opt.mouseleave($(this));
+
+				});
+
+			var $shw = $m.s.shw; // get slideshow-module reference from settings...
+
+			$shw
+				.on('mouseenter', '.slideshow-options li', function(){
+
+					$m.uiAct.shw.opt.mouseenter($(this));
+
+				})
+				.on('mouseenter', '.slideshow-image', function(){
+
+					$m.uiAct.shw.img.mouseenter($(this));
+
+				})
+				.on('mouseleave', '.slideshow-image', function(){
+
+					$m.uiAct.shw.img.mouseleave($(this));
 
 				});
 
 		}, // end of uiLst fnc
 
-		uiAct : {
+		uiAct : { // UI actions
 
-			sld : {
+			sld : { // slider...
 
-				slidestart : function(){
+				ui : { // jQUERY UI slider...
 
-					var $sldBar = $m.s.sldBar; // get slider bar reference from settings...
+					slidestart : function(){
 
-					$sldBar.addClass('active');
-					// NOTE... the slider handle does not need it's own active class created as jQUERY UI adds one automaticlly = '.ui-state-active'
+						var $sldBar = $m.s.sld.bar; // get slider bar reference from settings...
 
-				}, // end of slide start
+						$sldBar.addClass('active');
+						// NOTE... the slider handle does not need it's own active class created as jQUERY UI adds one automaticlly = '.ui-state-active'
 
-				slide : function($curPos){
+					}, // end of slide start
 
-					var $val = $m.uiAct.sld.findVal($curPos), // find which of the three options that slider handle is closer to...
-						$sldOpt = $m.s.sldOpt, // slider options container
-						$sldOptLi = $m.s.sldOptLi, // all slider options
-						$opt = $m.s['sldOpt' + $val]; // current slider option
+					slide : function($curPos, $click){
 
-					$sldOptLi.removeClass('active');
-					$sldOpt.addClass('slide');
-					$opt.addClass('active');
+						var $val = $m.uiAct.sld.ui.findVal($curPos), // find which of the three options that slider handle is closer to...
+							$sldOpt = $m.s.sld.opt, // slider options container
+							$sldOptLi = $m.s.sld.optLi, // all slider options
+							$opt = $m.s.sld['opt' + $val]; // current slider option
 
-				}, // end of slide fnc
+						$sldOptLi.removeClass('active');
+						$opt.addClass('active');
 
-				slidestop : function($curPos){
+						if(!$click){
+							$sldOpt.addClass('slide');
+						}
 
-					console.log('slidestop');
-					console.log('$curPos = ' + $curPos);
+						$m.uiAct.sld.ui.prcAni($curPos); // price animation
 
-					var	$sld = $m.s.sld, // get slider reference from settings...
-						$sldOpt = $m.s.sldOpt, // slider options container
-						$sldBar = $m.s.sldBar, // get slider bar reference from settings...
-						$sldPos = {
-							newPos : $curPos // NEW handle position
-						},
-						$val = $m.uiAct.sld.findVal($curPos); // find which of the three options that slider handle is closer to...
-					
-					$sldBar.removeClass('active');
-					$sldOpt.removeClass('slide');
+					}, // end of slide fnc
 
-					$m.uiAct.sld.sldAni($sld, $sldPos, $val);
+					slidestop : function($curPos){
 
-				}, // end of slidestop fnc
-
-				findVal : function($curPos){
-
-					// find which of the three options that slider handle is closer to...
-					if($curPos <= 150){
-
-						//console.log('-- reset at position 1 --');
-
-						return 100;
-
-
-					}else if($curPos > 150 && $curPos < 250){
-
-						//console.log('-- reset at position 2 --');
+						var	$sldOpt = $m.s.sld.opt, // slider options container
+							$sldBar = $m.s.sld.bar, // get slider bar reference from settings...
+							$val = $m.uiAct.sld.ui.findVal($curPos); // find which of the three options that slider handle is closer to...
 						
-						return 200;
+						$sldBar.removeClass('active');
+						$sldOpt.removeClass('slide');
 
-					}else{
+						$m.uiAct.sld.ui.sldAni($curPos, $val); // slider animation
+						$m.uiAct.sld.ui.slide($curPos, true); // slider animation
 
-						//console.log('-- reset at position 3 --');
-						
-						return 300;
+					}, // end of slidestop fnc
 
-					} // end of if statement
+					findVal : function($curPos){
 
-				}, // end of findVal fnc
+						// find which of the three options that slider handle is closer to...
+						if($curPos <= 150){
 
-				sldAni : function($sld, $sldPos, $val){
+							//console.log('-- reset at position 1 --');
 
-					TweenMax.to($sldPos, 0.5, {newPos : $val, onUpdate: logDat}); // animate the slider into new position...
+							return 100;
 
-					function logDat(){ // fun via TweenMax function above...
 
-						$sld.slider('value', $sldPos.newPos); // update the jQuery UI slider value in the DOM with the current tweened value
+						}else if($curPos > 150 && $curPos < 250){
 
-					} // end dof logDat fnc
+							//console.log('-- reset at position 2 --');
+							
+							return 200;
 
-				}, // end of sldAni fuc
+						}else{
 
-				mouseenter : function(){
+							//console.log('-- reset at position 3 --');
+							
+							return 300;
 
-					console.log('mouseenter');
+						} // end of if statement
 
-				}, // end of mouseenter fnc
+					}, // end of findVal fnc
 
-				mouseleave : function(){
+					sldAni : function($curPos, $val){
 
-					console.log('mouseleave');
+						var	$sld = $m.s.sld.main, // get slider reference from settings...
+							$tmxDat = { // TweenMax data
+								newPos : $curPos // NEW handle position
+							};
 
-				} // end of mouseleave fnc
+						TweenMax.to($tmxDat, 0.5, {newPos : $val, onUpdate: logDat}); // animate the slider into new position...
+
+						function logDat(){ // fun via TweenMax function above...
+
+							$sld.slider('value', $tmxDat.newPos); // update the jQuery UI slider value in the DOM with the current tweened value
+							$m.uiAct.sld.ui.prcAni($tmxDat.newPos); // price animation
+
+						} // end dof logDat fnc
+
+					}, // end of sldAni fuc
+
+					prcAni : function($curPos){
+
+						var $prcNum = $m.s.sld.prcNum, // get price number reference from settings...
+							$optPrc = $m.s.prc, // get option price reference from settings...
+							//$seg = null; // find out id the slider handle lies within the top or bottom segement of the slider... between 100 & 200 or 201 & 300
+							$newPrc = null;
+
+						if($curPos <= 200){
+
+							$newPrc = ($curPos - 100) / 100 * $m.s.prc['200'];
+
+						}else{
+
+							$newPrc = (($curPos - 200) / 100 * ($m.s.prc['300'] - $m.s.prc['200'])) + $m.s.prc['200'];
+
+						} // end of if else statement
+
+						$newPrc = Math.round($newPrc); // round the new price
+
+						$prcNum.text($newPrc);
+
+					}, // end of prcAni
+
+					mouseenter : function(){
+
+						console.log('mouseenter');
+
+					}, // end of mouseenter fnc
+
+					mouseleave : function(){
+
+						console.log('mouseleave');
+
+					} // end of mouseleave fnc
+
+				}, // end of uiSld obj
+
+				opt : { // options...
+
+					onclick : function($this, $curPos){
+
+						var $sldOpt = $m.s.sld.opt, // get slider-options reference from settings...
+							$val = $this.attr('data-val'); // find the new val pos
+
+						$m.uiAct.sld.ui.sldAni($curPos, $val); // slider animation
+
+						$sldOpt.find('li').removeClass('active');
+						$this.addClass('active');
+
+					}, // end of mouseenter fnc
+
+					mouseenter : function($this){
+
+						$this.addClass('enter');
+
+					}, // end of mouseenter fnc
+
+					mouseleave : function($this){
+
+						$this.removeClass('enter');
+
+					} // end of mouseleave fnc
+
+				} // end of sldOpt obj
 
 			}, // end of sld obj
 
-			sldOpt : {
+			shw : { // slideshow...
 
-				onclick : function($this, $curPos){
+				opt : { // options object...
 
-					var $sld = $m.s.sld, // get slider reference from settings...
-						$sldOpt = $m.s.sldOpt, // get slider-options reference from settings...
-						$sldPos = {
-							newPos : $curPos // NEW handle position
-						},
-						$val = $this.attr('data-val'); // find the new val pos
+					mouseenter : function($this){
 
-					$m.uiAct.sld.sldAni($sld, $sldPos, $val);
+						var $shw = $m.s.shw, // get slideshow-module reference from settings...
+							$li = $this.siblings('li'), // select all options
+							$val = $this.attr('data-val'); // get the data attribute from the current image option
 
-					$sldOpt.find('li').removeClass('active');
-					$this.addClass('active');
+							$shw.attr({'data-val' : $val}); // place that attribute into tje
 
-				}, // end of mouseenter fnc
+							$li.removeClass('enter');
+							$this.addClass('enter');
 
-				mouseenter : function($this){
+					} // end of mouseenter fnc
 
-					$this.addClass('enter');
+				}, // end of opt obj
 
-				}, // end of mouseenter fnc
+				img : { // image
 
-				mouseleave : function($this){
+					mouseenter : function($this){
 
-					$this.removeClass('enter');
+						$this.addClass('enter');
 
-				} // end of mouseleave fnc
+					}, // end of mouseenter fnc
 
-			} // end of sldOpt obj
+					mouseleave : function($this){
+
+						$this.removeClass('enter');
+
+					} // end of mouseleave fnc
+
+				} // end of img obj
+
+			} // end of shw obj
 
 		}, // end of uiAct obj
 
@@ -302,154 +396,3 @@ $(document).ready(function(){
 	})(); // end of anonymas function
 
 }); // end of document.ready
-
-/*
-	// ------------------------------------------------------>
-
-	var $data = {
-		'left' : 200
-	};
-
-	$('h1').on('click', function(){
-
-		TweenMax.to($data, 2, {'left' : 300, onUpdate: logData});
-
-	});
-
-	function logData(){
-		console.log('$data.left = ' + $data.left);
-
-		$sld.slider('value', $data.left);
-	}
-
-
-
-
-
-
-
-
-
-
-	// ------------------------------------------------------>
-
-	var $sld = $('.slider'), // the slider container
-		$sldHnd = $sld.find('a'); // slider handle
-
-	$sld.slider({
-		range: 'min',
-		value: 200,
-		min: 100,
-		max: 300,
-		animate: 'true',
-		slide: function( event, ui ) {
-			console.log('current loc = ' + ui.value);
-			//$sldPos = ui.value;
-		}
-	}).on( "slidestop", function( event, ui ) {
-
-		var $curPos = $sld.slider('value'), // CURRENT handle position
-			$newPos = null; // NEW handle position
-
-		if($curPos <= 150){
-
-			console.log('-- reset at position 1 --');
-
-			$newPos = 100;
-
-
-		}else if($curPos > 150 && $curPos < 250){
-
-			console.log('-- reset at position 2 --');
-			
-			$newPos = 200;
-
-		}else{
-
-			console.log('-- reset at position 3 --');
-			
-			$newPos = 300;
-
-		}
-
-	});
-*/
-
-/*
-	function tweenMe($newPos){
-
-		var $curPos = parseInt($sld.slider('value'), 10),
-			$step = 50, // animation steps
-			$inc = 1; // positive or negitive increment?
-
-		if($curPos > $newPos){
-
-			$inc = -1;
-
-		}
-
-		console.log(typeof($curPos));
-
-		if($curPos !== $newPos){
-
-			$sld.slider('value', $curPos + ($step * $inc));
-
-			console.log('tweening! >>> cur pos = ' + ($curPos + ($step * $inc)));
-
-			//tweenMe($newPos);
-		
-		}else{
-
-			return ''; // break function...
-		}
-
-
-	}
-*/
-
-/*
-	.on('mouseup', function(){
-		console.log('mouseup!');
-
-		$sldPos = $sld.slider('option', 'value');
-
-		console.log('{ val = ' + $sldPos + '}');
-
-		if($sldPos <= 150){
-
-			console.log('-- reset at position 1 --');
-
-			// have greensock tween the value!
-			$sld.slider({value: 100});
-
-		}else if($sldPos > 150 && $sldPos < 250){
-
-			console.log('-- reset at position 2 --');
-			
-			// have greensock tween the value!
-			$sld.slider({value: 200});
-
-		}else{
-
-			console.log('-- reset at position 3 --');
-			
-			// have greensock tween the value!
-			$sld.slider({value: 300});
-
-		}
-	});
-*/
-
-
-/*
-	$sld.slider({
-		min: 1,
-		max: 3,
-		create: function( event, ui ) {
-			// ???
-		},
-		slide: function( event, ui ) {
-			console.log('current loc = ' + ui.value);
-		}
-	});
-*/

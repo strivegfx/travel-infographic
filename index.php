@@ -45,14 +45,14 @@
 						<li data-val="300"><span>extravagant</span></li>
 					</ul>
 
-					<div class="sub-divider"></div>
+					<!--<div class="sub-divider"></div>
 
 					<div class="description">
 						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 						consequat.
-					</div>
+					</div>-->
 
 					<div class="price-container">
 						<div class="price">
@@ -71,11 +71,11 @@
 
 					<h3>best beaches</h3>
 
-					<div class="slideshow-image">
+					<div class="slideshow-image" data-val="1">
 
 						<div class="image-clip">
 
-							<div class="rollover active"></div>
+							<div class="rollover"></div>
 
 							<ul class="image-container">
 
@@ -91,14 +91,14 @@
 
 					<ul class="slideshow-options clear-fix">
 
-						<li class="active" data-val="1"></li>
+						<li class="enter" data-val="1"></li>
 						<li data-val="2"></li>
 						<li data-val="3"></li>
 
 					</ul>
 
 					<span class="title">Paris</span>
-					<span class="description">Lorem ipsum dolor sit amet, consectetur adipisicing...</span>
+					<!--<span class="description">Lorem ipsum dolor sit amet, consectetur adipisicing...</span>-->
 
 				</div> <!-- end of content -->
 

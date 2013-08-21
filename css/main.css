@@ -12,7 +12,7 @@
   display: table;
   clear: both; }
 
-/* line 35, ../sass/main.scss */
+/* line 38, ../sass/main.scss */
 .stuff-shell {
   position: relative;
   margin: 0 auto 0 auto;
@@ -21,14 +21,14 @@
   background-image: url(../img/stuff-shell.png);
   background-repeat: no-repeat; }
 
-/* line 46, ../sass/main.scss */
+/* line 49, ../sass/main.scss */
 .module-container {
   position: relative;
   font-family: arial, serif;
   width: 620px;
   color: #08afb7; }
 
-/* line 54, ../sass/main.scss */
+/* line 57, ../sass/main.scss */
 .module {
   z-index: 0;
   position: relative;
@@ -37,7 +37,7 @@
   background: -moz-linear-gradient(bottom, #c2fafc, #ffffff);
   background: -o-linear-gradient(bottom, #c2fafc, #ffffff);
   background: linear-gradient(bottom, #c2fafc, #ffffff); }
-  /* line 59, ../sass/main.scss */
+  /* line 62, ../sass/main.scss */
   .module:before, .module:after {
     z-index: -1;
     position: absolute;
@@ -46,7 +46,7 @@
     width: 50%;
     height: 100%;
     top: 0; }
-  /* line 67, ../sass/main.scss */
+  /* line 70, ../sass/main.scss */
   .module:before {
     left: 0;
     background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #ffffff), color-stop(100%, rgba(255, 255, 255, 0)));
@@ -54,7 +54,7 @@
     background: -moz-linear-gradient(left, #ffffff, rgba(255, 255, 255, 0));
     background: -o-linear-gradient(left, #ffffff, rgba(255, 255, 255, 0));
     background: linear-gradient(left, #ffffff, rgba(255, 255, 255, 0)); }
-  /* line 72, ../sass/main.scss */
+  /* line 75, ../sass/main.scss */
   .module:after {
     right: 0;
     background: -webkit-gradient(linear, 100% 50%, 0% 50%, color-stop(0%, #ffffff), color-stop(100%, rgba(255, 255, 255, 0)));
@@ -62,11 +62,11 @@
     background: -moz-linear-gradient(right, #ffffff, rgba(255, 255, 255, 0));
     background: -o-linear-gradient(right, #ffffff, rgba(255, 255, 255, 0));
     background: linear-gradient(right, #ffffff, rgba(255, 255, 255, 0)); }
-  /* line 77, ../sass/main.scss */
+  /* line 80, ../sass/main.scss */
   .module .content {
     z-index: 2;
     padding: 50px 0 80px 0; }
-    /* line 81, ../sass/main.scss */
+    /* line 84, ../sass/main.scss */
     .module .content:after {
       position: absolute;
       display: block;
@@ -79,32 +79,32 @@
       background-position: 0 -80px;
       background-repeat: no-repeat; }
 
-/* line 96, ../sass/main.scss */
+/* line 99, ../sass/main.scss */
 h2, h3 {
   font-family: 'Merriweather';
   font-style: italic;
   font-weight: 300;
   text-align: center; }
 
-/* line 105, ../sass/main.scss */
+/* line 108, ../sass/main.scss */
 h2 {
   font-size: 60px;
   margin: 0 0 50px 0; }
 
-/* line 110, ../sass/main.scss */
+/* line 113, ../sass/main.scss */
 h3 {
   font-size: 40px;
   margin: 0 0 25px 0; }
 
-/* line 115, ../sass/main.scss */
+/* line 118, ../sass/main.scss */
 .description {
   display: block;
   font-size: 15px;
   text-align: center;
   color: #045255;
-  margin: 0 50px 0 50px; }
+  margin: 0 50px 50px 50px; }
 
-/* line 123, ../sass/main.scss */
+/* line 126, ../sass/main.scss */
 .sub-divider {
   height: 12px;
   background: url(../img/asset-sprite.png) 0 -54px no-repeat;
@@ -268,16 +268,11 @@ h3 {
       .slider-module .slider-options li[data-val="100"] {
         margin: 0 0 0 11%; }
   /* line 169, ../sass/_slider.scss */
-  .slider-module .description {
-    font-size: 15px;
-    text-align: center;
-    color: #045255;
-    margin: 0 50px 50px 50px; }
-  /* line 176, ../sass/_slider.scss */
   .slider-module .price-container {
     position: relative;
-    text-align: center; }
-    /* line 181, ../sass/_slider.scss */
+    text-align: center;
+    padding: 50px 0 0 0; }
+    /* line 175, ../sass/_slider.scss */
     .slider-module .price-container:before {
       z-index: -2;
       position: absolute;
@@ -286,7 +281,7 @@ h3 {
       width: 280px;
       height: 280px;
       left: 50%;
-      top: -20%;
+      top: 20%;
       margin: 0 0 0 -140px;
       background: #08afb7;
       border: 2px solid #045255;
@@ -295,23 +290,23 @@ h3 {
       -ms-border-radius: 50%;
       -o-border-radius: 50%;
       border-radius: 50%; }
-    /* line 194, ../sass/_slider.scss */
+    /* line 188, ../sass/_slider.scss */
     .slider-module .price-container .price {
       font-family: 'Josefin Slab';
       font-weight: 400;
       font-style: italic;
       color: white; }
-      /* line 202, ../sass/_slider.scss */
+      /* line 196, ../sass/_slider.scss */
       .slider-module .price-container .price .dollar {
         font-size: 20px; }
-      /* line 206, ../sass/_slider.scss */
+      /* line 200, ../sass/_slider.scss */
       .slider-module .price-container .price .number {
         font-size: 60px; }
-      /* line 210, ../sass/_slider.scss */
+      /* line 204, ../sass/_slider.scss */
       .slider-module .price-container .price .nzd {
         font-size: 20px;
         text-transform: uppercase; }
-    /* line 216, ../sass/_slider.scss */
+    /* line 210, ../sass/_slider.scss */
     .slider-module .price-container .footer {
       display: block;
       font-family: 'Merriweather', serif;
@@ -418,15 +413,25 @@ h3 {
     .pie-module .chart-container .pie-chart .chart-container canvas {
       margin: 0 0 0 55px; }
 
-/* line 3, ../sass/_slideshow.scss */
+/* line 8, ../sass/_slideshow.scss */
+.slideshow-module[data-val="1"] .image-container {
+  left: 0px; }
+/* line 16, ../sass/_slideshow.scss */
+.slideshow-module[data-val="2"] .image-container {
+  left: -490px; }
+/* line 24, ../sass/_slideshow.scss */
+.slideshow-module[data-val="3"] .image-container {
+  left: -980px; }
+/* line 30, ../sass/_slideshow.scss */
 .slideshow-module .slideshow-image {
   position: relative;
   width: 490px;
   height: 154px;
   background: gray;
   margin: 0 0 0 65px;
-  border: 2px solid white; }
-  /* line 11, ../sass/_slideshow.scss */
+  border: 2px solid white;
+  cursor: pointer; }
+  /* line 39, ../sass/_slideshow.scss */
   .slideshow-module .slideshow-image:after {
     position: absolute;
     display: block;
@@ -443,16 +448,28 @@ h3 {
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
     border-radius: 50%; }
-  /* line 23, ../sass/_slideshow.scss */
+  /* line 53, ../sass/_slideshow.scss */
+  .slideshow-module .slideshow-image.enter .rollover {
+    margin: -450px 0 0 -450px !important;
+    width: 900px !important;
+    height: 900px !important; }
+  /* line 60, ../sass/_slideshow.scss */
   .slideshow-module .slideshow-image .image-clip {
     position: relative;
     overflow: hidden; }
-    /* line 27, ../sass/_slideshow.scss */
+    /* line 64, ../sass/_slideshow.scss */
     .slideshow-module .slideshow-image .image-clip .rollover {
+      -webkit-transition: width 0.25s ease, height 0.25s ease, margin 0.25s ease;
+      -moz-transition: width 0.25s ease, height 0.25s ease, margin 0.25s ease;
+      -o-transition: width 0.25s ease, height 0.25s ease, margin 0.25s ease;
+      transition: width 0.25s ease, height 0.25s ease, margin 0.25s ease;
+      z-index: 1;
       position: absolute;
-      margin: -50% 0 0 -50%;
-      width: 0;
-      height: 0;
+      left: 0;
+      top: 0;
+      margin: -100px 0 0 -100px;
+      width: 200px;
+      height: 200px;
       background: rgba(8, 175, 183, 0.5);
       border: 2px solid white;
       -webkit-border-radius: 50%;
@@ -460,17 +477,19 @@ h3 {
       -ms-border-radius: 50%;
       -o-border-radius: 50%;
       border-radius: 50%; }
-      /* line 36, ../sass/_slideshow.scss */
-      .slideshow-module .slideshow-image .image-clip .rollover.active {
-        width: 860px;
-        height: 860px; }
-    /* line 42, ../sass/_slideshow.scss */
+    /* line 78, ../sass/_slideshow.scss */
     .slideshow-module .slideshow-image .image-clip .image-container {
+      -webkit-transition: left 0.25s ease;
+      -moz-transition: left 0.25s ease;
+      -o-transition: left 0.25s ease;
+      transition: left 0.25s ease;
+      z-index: 0;
+      position: relative;
       width: 1470px;
       list-style-type: none;
       margin: 0;
       padding: 0; }
-      /* line 48, ../sass/_slideshow.scss */
+      /* line 87, ../sass/_slideshow.scss */
       .slideshow-module .slideshow-image .image-clip .image-container li {
         width: 490px;
         height: 150px;
@@ -478,52 +497,69 @@ h3 {
         background-image: url(../img/slideshow-temp.jpg);
         background-repeat: no-repeat;
         background-position: center center; }
-/* line 62, ../sass/_slideshow.scss */
+/* line 101, ../sass/_slideshow.scss */
 .slideshow-module .slideshow-options {
+  z-index: 3;
   position: relative;
   list-style-type: none;
   margin: -18px 0 0 0;
   padding: 0; }
-  /* line 68, ../sass/_slideshow.scss */
+  /* line 108, ../sass/_slideshow.scss */
   .slideshow-module .slideshow-options li {
+    -webkit-transition: background 0.25s ease, border 0.25s ease;
+    -moz-transition: background 0.25s ease, border 0.25s ease;
+    -o-transition: background 0.25s ease, border 0.25s ease;
+    transition: background 0.25s ease, border 0.25s ease;
     position: relative;
     float: left;
     width: 36px;
     height: 36px;
     background: white;
     border: 2px solid #cccccc;
+    cursor: pointer;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
     border-radius: 50%; }
-    /* line 77, ../sass/_slideshow.scss */
-    .slideshow-module .slideshow-options li.active {
+    /* line 119, ../sass/_slideshow.scss */
+    .slideshow-module .slideshow-options li:after {
+      -webkit-transition: width 0.25s ease, height 0.25s ease, left 0.25s ease, top 0.25s ease, border 0.25s ease;
+      -moz-transition: width 0.25s ease, height 0.25s ease, left 0.25s ease, top 0.25s ease, border 0.25s ease;
+      -o-transition: width 0.25s ease, height 0.25s ease, left 0.25s ease, top 0.25s ease, border 0.25s ease;
+      transition: width 0.25s ease, height 0.25s ease, left 0.25s ease, top 0.25s ease, border 0.25s ease;
+      position: absolute;
+      display: block;
+      content: "";
+      width: 0;
+      height: 0;
+      background-color: white;
+      left: 16px;
+      top: 16px;
+      border: 2px solid white;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      -o-border-radius: 50%;
+      border-radius: 50%; }
+    /* line 131, ../sass/_slideshow.scss */
+    .slideshow-module .slideshow-options li.enter {
       background: #08afb7;
       border: 2px solid #045255; }
-      /* line 80, ../sass/_slideshow.scss */
-      .slideshow-module .slideshow-options li.active:after {
+      /* line 135, ../sass/_slideshow.scss */
+      .slideshow-module .slideshow-options li.enter:after {
         width: 18px;
         height: 18px;
-        background-color: white;
         left: 7px;
         top: 7px;
-        border: 2px solid #045255;
-        position: absolute;
-        display: block;
-        content: "";
-        -webkit-border-radius: 50%;
-        -moz-border-radius: 50%;
-        -ms-border-radius: 50%;
-        -o-border-radius: 50%;
-        border-radius: 50%; }
-    /* line 92, ../sass/_slideshow.scss */
+        border: 2px solid #045255; }
+    /* line 144, ../sass/_slideshow.scss */
     .slideshow-module .slideshow-options li[data-val="1"] {
       margin: 0 0 0 246px; }
-    /* line 96, ../sass/_slideshow.scss */
+    /* line 148, ../sass/_slideshow.scss */
     .slideshow-module .slideshow-options li[data-val="2"] {
       margin: 0 10px 0 10px; }
-/* line 106, ../sass/_slideshow.scss */
+/* line 158, ../sass/_slideshow.scss */
 .slideshow-module .title {
   display: block;
   text-transform: uppercase;
