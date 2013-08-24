@@ -35,6 +35,22 @@ $grayDrk: darken($gray, 20%);
 	content: "";
 }
 
+/*@mixin keyframes($aniName){
+
+    @-webkit-keyframes $aniName{
+        @content;
+    }
+    @-moz-keyframes $aniName{
+        @content;
+    }
+    @-o-keyframes $aniName{
+        @content;
+    }
+    @keyframes $aniName{
+        @content;
+    }
+}*/
+
 .stuff-shell{
 	position: relative;
 	margin: 0 auto 0 auto;
@@ -57,7 +73,9 @@ $grayDrk: darken($gray, 20%);
 .module{
 	z-index: 0;
 	position: relative;
+	overflow: hidden;
 	@include background(linear-gradient(bottom, lighten($teal, 50%), white));
+	behavior: url(PIE-1.0.0/PIE.htc);
 
 	&:before, &:after{
 		z-index: -1;

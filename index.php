@@ -14,7 +14,7 @@
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/ht5bp.css">
-		<link type="texxt/css" rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+		<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
 		<link type="text/css" rel="stylesheet" href="css/main.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
@@ -38,7 +38,7 @@
 						<span class="title-budget">budget</span>
 					</div>
 
-					<div class="slider"></div>
+					<div class="slider-container"></div>
 					<ul class="slider-options clear-fix">
 						<li data-val="100"><span>shoe string</span></li>
 						<li class="active" data-val="200"><span>average</span></li>
@@ -65,13 +65,13 @@
 
 			</div> <!-- end of slider-module -->
 
-			<div class="module slideshow-module">
+			<div class="module slideshow-module" data-val="1">
 
 				<div class="content">
 
 					<h3>best beaches</h3>
 
-					<div class="slideshow-image" data-val="1">
+					<div class="slideshow-image">
 
 						<div class="image-clip">
 
@@ -79,9 +79,15 @@
 
 							<ul class="image-container">
 
-								<li class="image-1"></li>
-								<li class="image-2"></li>
-								<li class="image-3"></li>
+								<li class="image-1">
+									<div class="fade"></div>
+								</li>
+								<li class="image-2">
+									<div class="fade"></div>
+								</li>
+								<li class="image-3">
+									<div class="fade"></div>
+								</li>
 
 							</ul>
 
@@ -91,13 +97,17 @@
 
 					<ul class="slideshow-options clear-fix">
 
-						<li class="enter" data-val="1"></li>
+						<li data-val="1"></li>
 						<li data-val="2"></li>
 						<li data-val="3"></li>
 
 					</ul>
 
-					<span class="title">Paris</span>
+					<ul class="title-container">
+						<li data-val="1">Option One</li>
+						<li data-val="2">Option Two</li>
+						<li data-val="3">Option Three</li>
+					</ul>
 					<!--<span class="description">Lorem ipsum dolor sit amet, consectetur adipisicing...</span>-->
 
 				</div> <!-- end of content -->
@@ -127,6 +137,9 @@
 							<div class="chart-container">
 								<span class="price">$113.10</span>
 								<canvas width="200" height="200"></canvas>
+								<!--[if lte IE 8]>
+									<script src="excanvas.js"></script>
+								<![endif]-->
 							</div>
 						</div>
 
@@ -136,6 +149,9 @@
 							<div class="chart-container">
 								<span class="price">$113.10</span>
 								<canvas width="200" height="200"></canvas>
+								<!--[if lte IE 8]>
+									<script src="excanvas.js"></script>
+								<![endif]-->
 							</div>
 						</div>
 
@@ -145,6 +161,9 @@
 							<div class="chart-container">
 								<span class="price">$113.10</span>
 								<canvas width="200" height="200"></canvas>
+								<!--[if lte IE 8]>
+									<script src="excanvas.js"></script>
+								<![endif]-->
 							</div>
 						</div>
 
@@ -154,6 +173,9 @@
 							<div class="chart-container">
 								<span class="price">$113.10</span>
 								<canvas width="200" height="200"></canvas>
+								<!--[if lte IE 8]>
+									<script src="excanvas.js"></script>
+								<![endif]-->
 							</div>
 						</div>
 

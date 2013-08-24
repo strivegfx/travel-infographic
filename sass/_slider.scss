@@ -55,7 +55,7 @@
 		}
 	}
 
-	.slider{
+	.slider-container{
 		z-index: 0;
 		position: relative;
 		height: 10px;
@@ -110,7 +110,7 @@
 				border: 2px solid $tealDrk;
 				@include border-radius(50%);
 			}
-		}	
+		}
 	}
 
 	.slider-options{

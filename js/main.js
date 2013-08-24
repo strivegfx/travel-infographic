@@ -33,13 +33,13 @@ $(document).ready(function(){
 			};
 
 			$m.s.sld = {}; // slider reference shell
-				$m.s.sld.main = $('.slider'); // slider container
-				$m.s.sld.opt = $m.s.sld.main.siblings('.slider-options'); // slider options container
+				$m.s.sld.cnt = $('.slider-container'); // slider container
+				$m.s.sld.opt = $m.s.sld.cnt.siblings('.slider-options'); // slider options container
 				$m.s.sld.optLi = $m.s.sld.opt.find('li'); // all slider options
 				$m.s.sld.opt100 = $m.s.sld.opt.find('li[data-val="100"]'); // slider option 100
 				$m.s.sld.opt200 = $m.s.sld.opt.find('li[data-val="200"]'); // slider option 200
 				$m.s.sld.opt300 = $m.s.sld.opt.find('li[data-val="300"]'); // slider option 300
-				$m.s.sld.prcNum = $m.s.sld.main.siblings('.price-container').find('.price .number'); // price number
+				$m.s.sld.prcNum = $m.s.sld.cnt.siblings('.price-container').find('.price .number'); // price number
 
 			$m.s.shw = $('.slideshow-module');
 
@@ -63,14 +63,14 @@ $(document).ready(function(){
 
 		genSld : function(){ // generate slider...
 
-			var $sld = $m.s.sld.main; // get slider reference from settings...
+			var $sld = $m.s.sld.cnt; // get slider reference from settings...
 
 			// create slider...
 			$sld.slider({
 				range: 'min',
 				value: 200,
 				min: 100,
-				max: 300,
+				max: 300//,
 				//animate: '500'
 			});
 
@@ -81,7 +81,7 @@ $(document).ready(function(){
 
 		uiLst : function(){ // create UI listeners
 
-			var $sld = $m.s.sld.main; // get slider reference from settings...
+			var $sld = $m.s.sld.cnt; // get slider reference from settings...
 
 			$sld
 				.on('slidestart', function(){
@@ -231,7 +231,7 @@ $(document).ready(function(){
 
 					sldAni : function($curPos, $val){
 
-						var	$sld = $m.s.sld.main, // get slider reference from settings...
+						var	$sld = $m.s.sld.cnt, // get slider reference from settings...
 							$tmxDat = { // TweenMax data
 								newPos : $curPos // NEW handle position
 							};
@@ -256,7 +256,7 @@ $(document).ready(function(){
 
 						if($curPos <= 200){
 
-							$newPrc = ($curPos - 100) / 100 * $m.s.prc['200'];
+							$newPrc = (($curPos - 100) / 100 * $m.s.prc['200']);// + $m.s.prc['100'];
 
 						}else{
 
@@ -321,13 +321,9 @@ $(document).ready(function(){
 					mouseenter : function($this){
 
 						var $shw = $m.s.shw, // get slideshow-module reference from settings...
-							$li = $this.siblings('li'), // select all options
 							$val = $this.attr('data-val'); // get the data attribute from the current image option
 
 							$shw.attr({'data-val' : $val}); // place that attribute into tje
-
-							$li.removeClass('enter');
-							$this.addClass('enter');
 
 					} // end of mouseenter fnc
 
@@ -337,13 +333,17 @@ $(document).ready(function(){
 
 					mouseenter : function($this){
 
-						$this.addClass('enter');
+						var $shw = $m.s.shw; // get slideshow-module reference from settings...
+
+						$shw.attr({'data-state' : 'enter'});
 
 					}, // end of mouseenter fnc
 
 					mouseleave : function($this){
 
-						$this.removeClass('enter');
+						var $shw = $m.s.shw; // get slideshow-module reference from settings...
+
+						$shw.removeAttr('data-state');
 
 					} // end of mouseleave fnc
 
