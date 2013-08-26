@@ -29,6 +29,9 @@ $blueDrk: darken($blue, 20%);
 $gray: #CCCCCC;
 $grayDrk: darken($gray, 20%);
 
+$conWth: 490px; // container width
+$imgWth: $conWth + ($conWth / 2); // image width
+
 @mixin pseudo{
 	position: absolute;
 	display: block;
@@ -71,11 +74,13 @@ $grayDrk: darken($gray, 20%);
 }
 
 .module{
+	@include transition(background-color $ani ease);
 	z-index: 0;
 	position: relative;
 	overflow: hidden;
-	@include background(linear-gradient(bottom, lighten($teal, 50%), white));
-	behavior: url(PIE-1.0.0/PIE.htc);
+	background-color: lighten($teal, 50%);
+	@include background-image(linear-gradient(bottom, rgba(white, 0), white));
+	//@include background(linear-gradient(bottom, lighten($teal, 50%), white));
 
 	&:before, &:after{
 		z-index: -1;

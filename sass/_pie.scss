@@ -91,27 +91,44 @@
 			float: left;
 			width: 310px;
 
-			.chart-container{
+			.jqplot-container{
 				position: relative;
+				width: 250px;
+				margin: - $pad 30px 0 30px;
+				cursor: pointer;
 
-				.price{
+				&[data-state="enter"]:after{
+					width: 230px;
+					height: 230px;
+					background: rgba($pink, 0.8);
+					margin: 18px 10px;
+				}
+
+				&:after{
+					@include transition(width $ani ease, height $ani ease, background $ani ease, margin $ani ease);
+					@include pseudo;
+					width: 0;
+					height: 0;
+					background: rgba($pink, 0);
+					margin: 125px 125px;
+					@include border-radius(50%);
+				}
+
+				&:before{
 					position: absolute;
 					display: block;
+					content: "$" attr(data-prc) "";
 					font:{
 						family: 'Josefin Slab';
 						weight: 400;
 						size: 25px;
 						style: italic;
 					}
-					left: 0;
-					top: 85px;
-					width: 100%;
+					color: $teal;
 					text-align: center;
-
-				}
-
-				canvas{
-					margin: 0 0 0 55px;
+					left: 0;
+					top: 130px;
+					width: 100%;
 				}
 			}
 		}

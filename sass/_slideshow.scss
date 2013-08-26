@@ -30,267 +30,17 @@
 	}
 }
 
+/*
+ *               _             _          _      
+ *  _ __   __ _ (_) _ _    ___| |_  _  _ | | ___ 
+ * | '  \ / _` || || ' \  (_-<|  _|| || || |/ -_)
+ * |_|_|_|\__,_||_||_||_| /__/ \__| \_, ||_|\___|
+ *                                  |__/         
+ *
+ */
+
 .slideshow-module{
-	$conWth: 490px; // container width
-	$imgWth: $conWth + ($conWth / 2); // image width
 
-	// when slide show image = mouse enter...
-
-	&[data-state="enter"][data-val="1"]{
-
-		.slideshow-options{
-
-			li[data-val="1"]{
-				background: $pink;
-				border: 2px solid $pinkDrk;
-
-				&:after{
-					border: 2px solid $pinkDrk;
-				}
-			}
-		}
-	} // end of [data-state="enter"][data-val="1"]
-
-	&[data-state="enter"][data-val="2"]{
-
-		.slideshow-options{
-
-			li[data-val="2"]{
-				background: $pink;
-				border: 2px solid $pinkDrk;
-
-				&:after{
-					border: 2px solid $pinkDrk;
-				}
-			}
-		}
-	} // end of [data-state="enter"][data-val="2"]
-
-	&[data-state="enter"][data-val="3"]{
-
-		.slideshow-options{
-
-			li[data-val="3"]{
-				background: $pink;
-				border: 2px solid $pinkDrk;
-
-				&:after{
-					border: 2px solid $pinkDrk;
-				}
-			}
-		}
-	} // end of [data-state="enter"][data-val="3"]
-
-	&[data-state="enter"]{ // when slide show image = mouse enter...
-
-		h3{
-			color: $pink;
-		}
-
-		.slideshow-image{
-
-			&:after{
-				//background: $pink;
-				animation:myfirst 1s infinite;
-				-webkit-animation:myfirst 1s infinite; /* Safari and Chrome */
-			}
-
-			.rollover{
-					margin: -450px 0 0 -450px !important;
-					width: 900px !important;
-					height: 900px !important;
-					background: rgba($pink, 0.5) !important;
-			}
-		}
-
-		.title-container{
-
-			li{
-				color: $pink;
-			}
-		}
-	} // end of [data-state="enter"]
-
-	&[data-val="1"]{ // when 1st image is active...
-
-		.image-container{
-			
-			.image-1{
-				left: 0;
-				
-				.fade{
-					@include opacity(1);
-				}
-			}
-
-			.image-2{
-				left: $imgWth;
-
-				.fade{
-					@include opacity(1);
-				}
-			}
-
-			.image-3{
-				left: $imgWth * 2;
-			}
-		}
-
-		.slideshow-options{
-
-			li[data-val="1"]{
-				background: $teal;
-				border: 2px solid $tealDrk;
-
-				&:after{
-					width: 18px;
-					height: 18px;
-					left: 7px;
-					top: 7px;
-					border: 2px solid $tealDrk;
-				}
-			}
-		}
-
-		.title-container{
-
-			li[data-val="1"]{
-				left: 0;
-				@include opacity(1);
-			}
-
-			li[data-val="2"]{
-				left: 10%;
-				@include opacity(0);
-			}
-
-			li[data-val="3"]{
-				left: 20%;
-				@include opacity(0);
-			}
-		}
-	} // end of [data-val="1"]
-
-	&[data-val="2"]{ // when 2nd image is active...
-
-		.image-container{
-			
-			.image-1{
-				left: $imgWth * -0.5;
-
-				.fade{
-					@include opacity(0.5);
-				}
-			}
-
-			.image-2{
-				left: 0;
-
-				.fade{
-					@include opacity(1);
-				}
-			}
-
-			.image-3{
-				left: $imgWth;
-			}
-		}
-
-		.slideshow-options{
-
-			li[data-val="2"]{
-				background: $teal;
-				border: 2px solid $tealDrk;
-
-				&:after{
-					width: 18px;
-					height: 18px;
-					left: 7px;
-					top: 7px;
-					border: 2px solid $tealDrk;
-				}
-			}
-		}
-
-		.title-container{
-
-			li[data-val="1"]{
-				left: -10%;
-				@include opacity(0);
-			}
-
-			li[data-val="2"]{
-				left: 0;
-				@include opacity(1);
-			}
-
-			li[data-val="3"]{
-				left: 10%;
-				@include opacity(0);
-			}
-		}
-	} // end of [data-val="2"]
-
-	&[data-val="3"]{ // when 3rd image is active...
-
-		.image-container{
-			
-			.image-1{
-				left: - $imgWth;
-
-				.fade{
-					@include opacity(0);
-				}
-			}
-
-			.image-2{
-				left: $imgWth * -0.5;
-
-				.fade{
-					@include opacity(0.5);
-				}
-			}
-
-			.image-3{
-				left: 0;
-			}
-		}
-
-		.slideshow-options{
-
-			li[data-val="3"]{
-				background: $teal;
-				border: 2px solid $tealDrk;
-
-				&:after{
-					width: 18px;
-					height: 18px;
-					left: 7px;
-					top: 7px;
-					border: 2px solid $tealDrk;
-				}
-			}
-		}
-
-		.title-container{
-
-			li[data-val="1"]{
-				left: -20%;
-				@include opacity(0);
-			}
-
-			li[data-val="2"]{
-				left: -10%;
-				@include opacity(0);
-			}
-
-			li[data-val="3"]{
-				left: 0;
-				@include opacity(1);
-			}
-		}
-	} // end of [data-val="3"]
-	
 	.slideshow-image{
 		position: relative;
 		width: 490px;
@@ -299,8 +49,9 @@
 		border: 2px solid white;
 		cursor: pointer;
 
-		&:after{
-			@include pseudo;
+		.info-icon{
+			z-index: 2;
+			position: absolute;
 			width: 80px;
 			height: 80px;
 			left: 0;
@@ -309,6 +60,7 @@
 			background: $teal;
 			border: 2px solid white;
 			@include border-radius(50%);
+			behavior: url(PIE-1.0.0/PIE.htc);
 		}
 
 		.image-clip{
@@ -445,4 +197,299 @@
 			width: 100%;
 		}
 	}
+} // end of slider module
+
+/*
+ *      _                                            _        _                 _           
+ *  __ | |_   __ _  _ _   __ _  ___   _ __   ___  __| | _  _ | | ___   __  ___ | | ___  _ _ 
+ * / _|| ' \ / _` || ' \ / _` |/ -_) | '  \ / _ \/ _` || || || |/ -_) / _|/ _ \| |/ _ \| '_|
+ * \__||_||_|\__,_||_||_|\__, |\___| |_|_|_|\___/\__,_| \_,_||_|\___| \__|\___/|_|\___/|_|  
+ *                       |___/                                                              
+ *
+ */
+
+// styles when a user mouseenter's inside the image area...
+
+body .slideshow-module[data-state="enter"]{ // when slide show image = mouse enter...
+	background-color: lighten($pink, 45%);
+
+	h3{
+		color: $pink;
+	}
+
+	.slideshow-image{
+
+		.info-icon{
+			//background: $pink;
+			animation:myfirst 1s infinite;
+			-webkit-animation:myfirst 1s infinite; /* Safari and Chrome */
+		}
+
+		.rollover{
+				margin: -450px 0 0 -450px !important;
+				width: 900px !important;
+				height: 900px !important;
+				background: rgba($pink, 0.5) !important;
+		}
+	}
+
+	.title-container{
+
+		li{
+			color: $pink;
+		}
+	}
+} // end of [data-state="enter"]
+
+// how each option button is effected by the mouse enter...
+
+body .slideshow-module[data-state="enter"][data-val="1"]{
+
+	.slideshow-options{
+
+		li[data-val="1"]{
+			background: $pink;
+			border: 2px solid $pinkDrk;
+
+			&:after{
+				border: 2px solid $pinkDrk;
+			}
+		}
+	}
 }
+
+body .slideshow-module[data-state="enter"][data-val="2"]{
+
+	.slideshow-options{
+
+		li[data-val="2"]{
+			background: $pink;
+			border: 2px solid $pinkDrk;
+
+			&:after{
+				border: 2px solid $pinkDrk;
+			}
+		}
+	}
+}
+
+body .slideshow-module[data-state="enter"][data-val="3"]{
+
+	.slideshow-options{
+
+		li[data-val="3"]{
+			background: $pink;
+			border: 2px solid $pinkDrk;
+
+			&:after{
+				border: 2px solid $pinkDrk;
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+body .slideshow-module[data-val="1"]{ // when 1st image is active...
+
+	.image-container{
+		
+		.image-1{
+			left: 0;
+			
+			.fade{
+				@include opacity(1);
+			}
+		}
+
+		.image-2{
+			left: $imgWth;
+
+			.fade{
+				@include opacity(1);
+			}
+		}
+
+		.image-3{
+			left: $imgWth * 2;
+		}
+	}
+
+	.slideshow-options{
+
+		li[data-val="1"]{
+			background: $teal;
+			border: 2px solid $tealDrk;
+
+			&:after{
+				width: 18px;
+				height: 18px;
+				left: 7px;
+				top: 7px;
+				border: 2px solid $tealDrk;
+			}
+		}
+	}
+
+	.title-container{
+
+		li[data-val="1"]{
+			left: 0;
+			@include opacity(1);
+		}
+
+		li[data-val="2"]{
+			left: 10%;
+			@include opacity(0);
+		}
+
+		li[data-val="3"]{
+			left: 20%;
+			@include opacity(0);
+		}
+	}
+} // end of [data-val="1"]
+
+body .slideshow-module[data-val="2"]{ // when 2nd image is active...
+
+	.image-container{
+		
+		.image-1{
+			left: $imgWth * -0.5;
+
+			.fade{
+				@include opacity(0.5);
+			}
+		}
+
+		.image-2{
+			left: 0;
+
+			.fade{
+				@include opacity(1);
+			}
+		}
+
+		.image-3{
+			left: $imgWth;
+		}
+	}
+
+	.slideshow-options{
+
+		li[data-val="2"]{
+			background: $teal;
+			border: 2px solid $tealDrk;
+
+			&:after{
+				width: 18px;
+				height: 18px;
+				left: 7px;
+				top: 7px;
+				border: 2px solid $tealDrk;
+			}
+		}
+	}
+
+	.title-container{
+
+		li[data-val="1"]{
+			left: -10%;
+			@include opacity(0);
+		}
+
+		li[data-val="2"]{
+			left: 0;
+			@include opacity(1);
+		}
+
+		li[data-val="3"]{
+			left: 10%;
+			@include opacity(0);
+		}
+	}
+} // end of [data-val="2"]
+
+body .slideshow-module[data-val="3"]{ // when 3rd image is active...
+
+	.image-container{
+		
+		.image-1{
+			left: - $imgWth;
+
+			.fade{
+				@include opacity(0);
+			}
+		}
+
+		.image-2{
+			left: $imgWth * -0.5;
+
+			.fade{
+				@include opacity(0.5);
+			}
+		}
+
+		.image-3{
+			left: 0;
+		}
+	}
+
+	.slideshow-options{
+
+		li[data-val="3"]{
+			background: $teal;
+			border: 2px solid $tealDrk;
+
+			&:after{
+				width: 18px;
+				height: 18px;
+				left: 7px;
+				top: 7px;
+				border: 2px solid $tealDrk;
+			}
+		}
+	}
+
+	.title-container{
+
+		li[data-val="1"]{
+			left: -20%;
+			@include opacity(0);
+		}
+
+		li[data-val="2"]{
+			left: -10%;
+			@include opacity(0);
+		}
+
+		li[data-val="3"]{
+			left: 0;
+			@include opacity(1);
+		}
+	}
+} // end of [data-val="3"]

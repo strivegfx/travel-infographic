@@ -1,5 +1,124 @@
-/* Welcome to Compass. Use this file to write IE specific override styles.
- * Import this file using the following HTML or equivalent:
- * <!--[if IE]>
- *   <link href="/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
- * <![endif]--> */
+/* Welcome to Compass. Use this file to write IE specific override styles.*/
+
+// generic values
+$ani: 0.25s;
+$pad: 50px;
+
+// colors
+$teal: #08AFB7;
+$tealDrk: darken($teal, 20%);
+$pink: #ED1E79;
+$pinkDrk: darken($pink, 20%);
+$sky: #3FA9F5;
+$skyDrk: darken($sky, 20%);
+$blue: #243751;
+$blueDrk: darken($blue, 20%);
+$gray: #CCCCCC;
+$grayDrk: darken($gray, 20%);
+
+$conWth: 490px; // container width
+$imgWth: $conWth + ($conWth / 2); // image width
+
+body{
+
+	.module{
+		background-color: red;
+		background-image: none;
+	}
+
+	.slider-module{
+		background: url(../img/sky-bg.jpg) left top no-repeat !important; // override the background gradient proporties for newer browsers
+
+		.title-your{
+			background: #bbdde2 !important;
+		}
+
+		.slider-container{
+
+			.ui-slider-handle{
+
+				&:after{
+					background-color: transparent !important;
+					border: none !important;
+				}
+			}
+		}
+	}
+}
+
+/*
+ *      _                                            _        _                 _           
+ *  __ | |_   __ _  _ _   __ _  ___   _ __   ___  __| | _  _ | | ___   __  ___ | | ___  _ _ 
+ * / _|| ' \ / _` || ' \ / _` |/ -_) | '  \ / _ \/ _` || || || |/ -_) / _|/ _ \| |/ _ \| '_|
+ * \__||_||_|\__,_||_||_|\__, |\___| |_|_|_|\___/\__,_| \_,_||_|\___| \__|\___/|_|\___/|_|  
+ *                       |___/                                                              
+ *
+ */
+
+// change the whole color scheme of the slider module when the slider handle is dragged...
+// javascript will add in the data attribure 'slide'
+
+body .slider-module[data-state="slide"]{
+
+	.title-container{
+
+		.title-choose{
+			color: $pinkDrk !important;
+		}
+
+		.title-your{
+			background-color: #e3bbd2 !important;
+		}
+
+		.title-budget{
+			color: $pink !important;
+		}
+	}
+
+	.slider-container{
+
+		.ui-slider-range{
+			background: $pink !important;
+		}
+
+		.ui-slider-handle{
+			background: $pink !important;
+			border: 2px solid $pinkDrk !important;
+
+			&:after{
+				border: 2px solid $pinkDrk !important;
+			}
+		}
+	}
+
+	.slider-options{
+
+		&.slide{
+
+			span{
+				color: $pink !important;
+			}
+		}
+
+		li{
+			color: $pinkDrk !important;
+
+			&.active{
+				color: $pink !important;
+			}
+		}
+	}
+
+	.price-container{
+
+		.footer{
+			color: $pinkDrk !important;
+		}
+		
+		.bg{
+			background: $pink !important;
+			border: 2px solid $pinkDrk !important;
+		}
+	}
+
+} // end of [data-state="slide"]

@@ -1,5 +1,59 @@
-/* Welcome to Compass. Use this file to write IE specific override styles.
- * Import this file using the following HTML or equivalent:
- * <!--[if IE]>
- *   <link href="/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
- * <![endif]--> */
+/* Welcome to Compass. Use this file to write IE specific override styles.*/
+/* line 24, ../sass/ie.scss */
+body .module {
+  background-color: red;
+  background-image: none; }
+/* line 29, ../sass/ie.scss */
+body .slider-module {
+  background: url(../img/sky-bg.jpg) left top no-repeat !important; }
+  /* line 32, ../sass/ie.scss */
+  body .slider-module .title-your {
+    background: #bbdde2 !important; }
+  /* line 40, ../sass/ie.scss */
+  body .slider-module .slider-container .ui-slider-handle:after {
+    background-color: transparent !important;
+    border: none !important; }
+
+/*
+ *      _                                            _        _                 _           
+ *  __ | |_   __ _  _ _   __ _  ___   _ __   ___  __| | _  _ | | ___   __  ___ | | ___  _ _ 
+ * / _|| ' \ / _` || ' \ / _` |/ -_) | '  \ / _ \/ _` || || || |/ -_) / _|/ _ \| |/ _ \| '_|
+ * \__||_||_|\__,_||_||_|\__, |\___| |_|_|_|\___/\__,_| \_,_||_|\___| \__|\___/|_|\___/|_|  
+ *                       |___/                                                              
+ *
+ */
+/* line 65, ../sass/ie.scss */
+body .slider-module[data-state="slide"] .title-container .title-choose {
+  color: #990c4a !important; }
+/* line 69, ../sass/ie.scss */
+body .slider-module[data-state="slide"] .title-container .title-your {
+  background-color: #e3bbd2 !important; }
+/* line 73, ../sass/ie.scss */
+body .slider-module[data-state="slide"] .title-container .title-budget {
+  color: #ed1e79 !important; }
+/* line 80, ../sass/ie.scss */
+body .slider-module[data-state="slide"] .slider-container .ui-slider-range {
+  background: #ed1e79 !important; }
+/* line 84, ../sass/ie.scss */
+body .slider-module[data-state="slide"] .slider-container .ui-slider-handle {
+  background: #ed1e79 !important;
+  border: 2px solid #990c4a !important; }
+  /* line 88, ../sass/ie.scss */
+  body .slider-module[data-state="slide"] .slider-container .ui-slider-handle:after {
+    border: 2px solid #990c4a !important; }
+/* line 98, ../sass/ie.scss */
+body .slider-module[data-state="slide"] .slider-options.slide span {
+  color: #ed1e79 !important; }
+/* line 103, ../sass/ie.scss */
+body .slider-module[data-state="slide"] .slider-options li {
+  color: #990c4a !important; }
+  /* line 106, ../sass/ie.scss */
+  body .slider-module[data-state="slide"] .slider-options li.active {
+    color: #ed1e79 !important; }
+/* line 114, ../sass/ie.scss */
+body .slider-module[data-state="slide"] .price-container .footer {
+  color: #990c4a !important; }
+/* line 118, ../sass/ie.scss */
+body .slider-module[data-state="slide"] .price-container .bg {
+  background: #ed1e79 !important;
+  border: 2px solid #990c4a !important; }

@@ -1,6 +1,5 @@
 /*jshint devel: true*/
 /*global TweenMax: true*/
-/*global Chart: true*/
 
 
 $(document).ready(function(){
@@ -33,6 +32,7 @@ $(document).ready(function(){
 			};
 
 			$m.s.sld = {}; // slider reference shell
+				$m.s.sld.mod = $('.slider-module'); // slider container
 				$m.s.sld.cnt = $('.slider-container'); // slider container
 				$m.s.sld.opt = $m.s.sld.cnt.siblings('.slider-options'); // slider options container
 				$m.s.sld.optLi = $m.s.sld.opt.find('li'); // all slider options
@@ -41,25 +41,35 @@ $(document).ready(function(){
 				$m.s.sld.opt300 = $m.s.sld.opt.find('li[data-val="300"]'); // slider option 300
 				$m.s.sld.prcNum = $m.s.sld.cnt.siblings('.price-container').find('.price .number'); // price number
 
-			$m.s.shw = $('.slideshow-module');
+			$m.s.shw = {};
+				$m.s.shw.mod = $('.slideshow-module');
 
-			$m.s.pieCht = {
-				pie1 : $('.pie-1').find('canvas').get(0).getContext("2d"),
-				pie2 : $('.pie-2').find('canvas').get(0).getContext("2d"),
-				pie3 : $('.pie-3').find('canvas').get(0).getContext("2d"),
-				pie4 : $('.pie-4').find('canvas').get(0).getContext("2d"),
-			};
+			$m.s.pie = {};
+				$m.s.pie.mod = $('.pie-module');
+
+				//pie1 : $('.pie-1').find('canvas').get(0).getContext("2d"),
+				//pie2 : $('.pie-2').find('canvas').get(0).getContext("2d"),
+				//pie3 : $('.pie-3').find('canvas').get(0).getContext("2d"),
+				//pie4 : $('.pie-4').find('canvas').get(0).getContext("2d"),
+			
 
 		}, // end of genSet
 
 		init : function(){
 
 			$m.genSet(); // generate settings
+			$m.testIe(); // is the browser less than IE 9.0
 			$m.genSld(); // generate slider
 			$m.uiLst(); // UI listeners
 			$m.genPie(); // generate pie charts
 
 		}, // end of init fnc
+
+		testIe : function(){ // is the browser less than IE 9.0
+
+			$m.s.ltIe9 = $('html').hasClass('lt-ie9');
+
+		}, // end of testIe fnc
 
 		genSld : function(){ // generate slider...
 
@@ -92,14 +102,12 @@ $(document).ready(function(){
 				.on('slide', function(){
 
 					var $curPos = $sld.slider('value'); // CURRENT handle position
-
-					$m.uiAct.sld.ui.slide($curPos, false); // run the UI action...					
+					$m.uiAct.sld.ui.slide($curPos/*, false*/); // run the UI action... false represents if the user activated the slide by clicking on the slider bar (in this case NO it was initiated by a drag = false)
 
 				})
 				.on('slidestop', function(){
 
 					var $curPos = $sld.slider('value'); // CURRENT handle position
-
 					$m.uiAct.sld.ui.slidestop($curPos); // run the UI action...					
 
 				})
@@ -120,7 +128,6 @@ $(document).ready(function(){
 				.on('click', 'li', function(){
 
 					var $curPos = $sld.slider('value'); // CURRENT handle position
-
 					$m.uiAct.sld.opt.onclick($(this), $curPos);
 
 				})
@@ -135,9 +142,9 @@ $(document).ready(function(){
 
 				});
 
-			var $shw = $m.s.shw; // get slideshow-module reference from settings...
+			var $shwMod = $m.s.shw.mod; // get slideshow-module reference from settings...
 
-			$shw
+			$shwMod
 				.on('mouseenter', '.slideshow-options li', function(){
 
 					$m.uiAct.shw.opt.mouseenter($(this));
@@ -145,12 +152,31 @@ $(document).ready(function(){
 				})
 				.on('mouseenter', '.slideshow-image', function(){
 
-					$m.uiAct.shw.img.mouseenter($(this));
+					$m.uiAct.shw.img.mouseenter();
 
 				})
 				.on('mouseleave', '.slideshow-image', function(){
 
-					$m.uiAct.shw.img.mouseleave($(this));
+					$m.uiAct.shw.img.mouseleave();
+
+				});
+
+			var $pieMod = $m.s.pie.mod;
+
+			$pieMod.find('.jqplot-container')
+				.on('click', function(){
+
+					$m.uiAct.pie.cht.onclick($(this));
+
+				})
+				.on('mouseenter', function(){
+
+					$m.uiAct.pie.cht.mouseenter($(this));
+
+				})
+				.on('mouseleave', function(){
+
+					$m.uiAct.pie.cht.mouseleave($(this));
 
 				});
 
@@ -164,26 +190,25 @@ $(document).ready(function(){
 
 					slidestart : function(){
 
-						var $sldBar = $m.s.sld.bar; // get slider bar reference from settings...
+						var $sldMod = $m.s.sld.mod; // get slider module reference from settings...
 
-						$sldBar.addClass('active');
-						// NOTE... the slider handle does not need it's own active class created as jQUERY UI adds one automaticlly = '.ui-state-active'
+						$sldMod.attr({'data-state' : 'slide'});
 
 					}, // end of slide start
 
-					slide : function($curPos, $click){
+					slide : function($curPos/*, $click*/){
 
 						var $val = $m.uiAct.sld.ui.findVal($curPos), // find which of the three options that slider handle is closer to...
-							$sldOpt = $m.s.sld.opt, // slider options container
+							//$sldMod = $m.s.sld.mod, // get slider module reference from settings...
 							$sldOptLi = $m.s.sld.optLi, // all slider options
 							$opt = $m.s.sld['opt' + $val]; // current slider option
 
 						$sldOptLi.removeClass('active');
 						$opt.addClass('active');
 
-						if(!$click){
-							$sldOpt.addClass('slide');
-						}
+						//if(!$click){ // if the slide function has not been activated be a click...
+						//	$sldMod.attr({'data-state' : 'slide'});
+						//}
 
 						$m.uiAct.sld.ui.prcAni($curPos); // price animation
 
@@ -191,15 +216,16 @@ $(document).ready(function(){
 
 					slidestop : function($curPos){
 
-						var	$sldOpt = $m.s.sld.opt, // slider options container
-							$sldBar = $m.s.sld.bar, // get slider bar reference from settings...
+						var	$sldMod = $m.s.sld.mod, // get slider module reference from settings...
 							$val = $m.uiAct.sld.ui.findVal($curPos); // find which of the three options that slider handle is closer to...
 						
-						$sldBar.removeClass('active');
-						$sldOpt.removeClass('slide');
+						//$sldBar.removeClass('active');
+						//$sldOpt.removeClass('slide');
+
+						$sldMod.removeAttr('data-state');
 
 						$m.uiAct.sld.ui.sldAni($curPos, $val); // slider animation
-						$m.uiAct.sld.ui.slide($curPos, true); // slider animation
+						$m.uiAct.sld.ui.slide($curPos/*, true*/); // slider animation
 
 					}, // end of slidestop fnc
 
@@ -256,11 +282,11 @@ $(document).ready(function(){
 
 						if($curPos <= 200){
 
-							$newPrc = (($curPos - 100) / 100 * $m.s.prc['200']);// + $m.s.prc['100'];
+							$newPrc = (($curPos - 100) / 100 * $optPrc['200']);// + $m.s.prc['100'];
 
 						}else{
 
-							$newPrc = (($curPos - 200) / 100 * ($m.s.prc['300'] - $m.s.prc['200'])) + $m.s.prc['200'];
+							$newPrc = (($curPos - 200) / 100 * ($optPrc['300'] - $optPrc['200'])) + $optPrc['200'];
 
 						} // end of if else statement
 
@@ -320,10 +346,10 @@ $(document).ready(function(){
 
 					mouseenter : function($this){
 
-						var $shw = $m.s.shw, // get slideshow-module reference from settings...
+						var $shwMod = $m.s.shw.mod, // get slideshow-module reference from settings...
 							$val = $this.attr('data-val'); // get the data attribute from the current image option
 
-							$shw.attr({'data-val' : $val}); // place that attribute into tje
+							$shwMod.attr({'data-val' : $val}); // place that attribute into tje
 
 					} // end of mouseenter fnc
 
@@ -331,59 +357,114 @@ $(document).ready(function(){
 
 				img : { // image
 
-					mouseenter : function($this){
+					mouseenter : function(){
 
-						var $shw = $m.s.shw; // get slideshow-module reference from settings...
+						var $shwMod = $m.s.shw.mod; // get slideshow-module reference from settings...
 
-						$shw.attr({'data-state' : 'enter'});
+						$shwMod.attr({'data-state' : 'enter'});
 
 					}, // end of mouseenter fnc
 
-					mouseleave : function($this){
+					mouseleave : function(){
 
-						var $shw = $m.s.shw; // get slideshow-module reference from settings...
+						var $shwMod = $m.s.shw.mod; // get slideshow-module reference from settings...
 
-						$shw.removeAttr('data-state');
+						$shwMod.removeAttr('data-state');
 
 					} // end of mouseleave fnc
 
 				} // end of img obj
 
-			} // end of shw obj
+			}, // end of shw obj
+
+			pie : {
+
+				cht : {
+
+					onclick : function($this){
+
+						//$this.attr({'data-state' : 'enter'});
+
+					}, // end of onclick fnc
+
+					mouseenter : function($this){
+
+						console.log('pie chart enter!')
+
+						$this.attr({'data-state' : 'enter'});
+
+					}, // end of mouseenter fnc
+
+					mouseleave : function($this){
+
+						$this.removeAttr('data-state');
+
+					} // end of mouseleave fnc
+
+				} // end of cht obj
+
+			} // end of pie obj
 
 		}, // end of uiAct obj
 
 		genPie : function(){
 
-			var $data = [
-				{
-					value : 30,
-					color : $m.s.col.gray
-				},
-				{
-					value : 50,
-					color : $m.s.col.pink
-				},
-				{
-					value : 100,
-					color : $m.s.col.sky
-				},
-				{
-					value : 40,
-					color : $m.s.col.blue
-				}
-			];
+			var $data = [['a',6], ['b',8], ['c',14], ['d',20]],
+				$col = $m.s.col,
+				$pieMod = $m.s.pie.mod,
+				$pieLoc = null,
+				$price = 0,
+				$i = null;
 
-			var $pie1 = $m.s.pieCht.pie1,
-				$pie2 = $m.s.pieCht.pie2,
-				$pie3 = $m.s.pieCht.pie3,
-				$pie4 = $m.s.pieCht.pie4;
+			for($i = 0; $i < $data.length; $i++){
 
-			//new Chart($ctx).Doughnut($data,options);
-			new Chart($pie1).Doughnut($data);
-			new Chart($pie2).Doughnut($data);
-			new Chart($pie3).Doughnut($data);
-			new Chart($pie4).Doughnut($data);
+				$price += $data[$i][1];
+			}
+
+			//console.log('data = ' + $data[0][1]);
+
+			for($i = 1; $i <= 4; $i++){
+
+				$pieLoc = $pieMod.find('.pie-' + $i).find('.jqplot-container');
+
+				$pieLoc.attr({'data-prc' : $price});
+
+				//$m.s.pie['cht' + $i] = $.jqplot('jqplot-container-' + $i, [$data], {
+				$pieLoc.jqplot([$data], {
+
+					seriesColors : [$col.gray, $col.pink, $col.sky, $col.blue],
+
+					seriesDefaults : {
+						renderer : $.jqplot.DonutRenderer,
+						shadow : false, // show shadow or not.
+						rendererOptions : {
+							sliceMargin : 2, // Donut's can be cut into slices like pies.
+							startAngle : -90, // Pies and donuts can start at any arbitrary angle.
+							showDataLabels : false, // By default, data labels show the percentage of the donut/pie.
+							highlightMouseOver: false,
+							highlightMouseDown: false
+						}
+					},
+
+					grid : {
+						background : 'transparent', // CSS color spec for background color of grid.
+						borderColor : 'inherit', // CSS color spec for border around grid.
+						borderWidth : 0, // pixel width of border around grid.
+						shadow : false // draw a shadow for grid.
+					},
+
+					//highlighter: {
+					//	show: true,
+					//	formatString:'%s',
+					//	tooltipLocation:'sw',
+					//	useAxesFormatters:false
+					//}
+
+				});
+
+
+			}
+
 
 		} // end of genPie fnc
 
@@ -396,3 +477,69 @@ $(document).ready(function(){
 	})(); // end of anonymas function
 
 }); // end of document.ready
+
+/*
+		genPie : function(){
+
+			var $pieCht = null,
+				$ctx = null,
+				$data = [
+					{
+						value : 30,
+						color : $m.s.col.gray
+					},
+					{
+						value : 50,
+						color : $m.s.col.pink
+					},
+					{
+						value : 100,
+						color : $m.s.col.sky
+					},
+					{
+						value : 40,
+						color : $m.s.col.blue
+					}
+				];
+
+
+
+			//pie1 : $('.pie-1').find('canvas').get(0).getContext("2d")
+
+			for(var $i = 0; $i < 4; $i++){
+
+				$pieCht = $('.pie-' + ($i + 1)).find('canvas');
+
+				if($m.s.ltIe9){
+
+					console.log('run IE canvas');
+
+					G_vmlCanvasManager.initElement($pieCht);
+
+				}
+
+				$ctx = $pieCht.get(0).getContext("2d");
+
+				new Chart($ctx).Doughnut($data);
+
+			}
+
+
+			var el = document.createElement('canvas');
+			G_vmlCanvasManager.initElement(el);
+			var ctx = el.getContext('2d');
+
+			var $pie1 = $m.s.pieCht.pie1,
+				$pie2 = $m.s.pieCht.pie2,
+				$pie3 = $m.s.pieCht.pie3,
+				$pie4 = $m.s.pieCht.pie4;
+
+			//new Chart($ctx).Doughnut($data,options);
+			new Chart($pie1).Doughnut($data);
+			new Chart($pie2).Doughnut($data);
+			new Chart($pie3).Doughnut($data);
+			new Chart($pie4).Doughnut($data);
+
+
+		} // end of genPie fnc
+*/

@@ -1,3 +1,12 @@
+/*
+ *               _             _          _      
+ *  _ __   __ _ (_) _ _    ___| |_  _  _ | | ___ 
+ * | '  \ / _` || || ' \  (_-<|  _|| || || |/ -_)
+ * |_|_|_|\__,_||_||_||_| /__/ \__| \_, ||_|\___|
+ *                                  |__/         
+ *
+ */
+
 .slider-module{
 	background: url(../img/sky-bg.jpg) left top no-repeat;
 
@@ -11,6 +20,7 @@
 		height: 300px;
 
 		.title-choose, .title-budget{
+			@include transition(color $ani ease);
 			font:{
 				family: 'Merriweather';
 				style: italic;
@@ -27,6 +37,7 @@
 		}
 
 		.title-your{
+			@include transition(background $ani ease, transform $ani ease);
 			z-index: -1;
 			position: absolute;
 			display: block;
@@ -39,9 +50,10 @@
 			width: 80px;
 			height: 80px;
 			color: white;
-			background-color: rgba($teal, 0.3);
+			background: rgba($teal, 0.3);
 			border: 3px solid white;
 			@include border-radius(50%);
+			behavior: url(PIE-1.0.0/PIE.htc);
 		}
 
 		.title-budget{
@@ -79,10 +91,6 @@
 			@include transition(background $ani ease);
 			height: 10px;
 			background: $teal;
-
-			&.active{
-				background: $pink;
-			}
 		}
 
 		.ui-slider-handle{
@@ -94,10 +102,7 @@
 			border: 2px solid $tealDrk;
 			cursor: pointer;
 			@include border-radius(50%);
-
-			&.ui-state-active{
-				background: $pink;
-			}
+			behavior: url(PIE-1.0.0/PIE.htc);
 
 			&:after{
 				@include pseudo;
@@ -120,17 +125,6 @@
 		height: 50px;
 		margin: 0;
 		padding: 0;
-		//background: gray;
-
-		&.slide{
-
-			.active{
-
-				span{
-					color: $pink;
-				}
-			}
-		}
 
 		li{
 			@include transition(color $ani ease, padding $ani ease, font-size $ani ease);
@@ -143,7 +137,7 @@
 			cursor: pointer;
 
 			&.enter{
-				color: $pink;
+				color: $teal;
 			}
 
 			&.active{
@@ -170,9 +164,9 @@
 		position: relative;
 		text-align: center;
 		padding: $pad 0 0 0;
-		//background: gray;
 
-		&:before{
+		/*&:before{
+			@include transition(background $ani ease, border $ani ease);
 			z-index: -2;
 			@include pseudo;
 			width: 280px;
@@ -183,7 +177,7 @@
 			background: $teal;
 			border: 2px solid $tealDrk;
 			@include border-radius(50%);
-		}
+		}*/
 
 		.price{
 			font: {
@@ -218,6 +212,101 @@
 			color: $tealDrk;
 			margin: -20px 0 0 0;
 		}
+
+		.bg{
+			@include transition(background $ani ease, border $ani ease);
+			position: absolute;
+			z-index: -2;
+			width: 280px;
+			height: 280px;
+			left: 50%;
+			top: 20%;
+			margin: 0 0 0 -140px;
+			background: $teal;
+			border: 2px solid $tealDrk;
+			@include border-radius(50%);
+			behavior: url(PIE-1.0.0/PIE.htc);
+		}
 	}
 
 } // end of slider module
+
+/*
+ *      _                                            _        _                 _           
+ *  __ | |_   __ _  _ _   __ _  ___   _ __   ___  __| | _  _ | | ___   __  ___ | | ___  _ _ 
+ * / _|| ' \ / _` || ' \ / _` |/ -_) | '  \ / _ \/ _` || || || |/ -_) / _|/ _ \| |/ _ \| '_|
+ * \__||_||_|\__,_||_||_|\__, |\___| |_|_|_|\___/\__,_| \_,_||_|\___| \__|\___/|_|\___/|_|  
+ *                       |___/                                                              
+ *
+ */
+
+// change the whole color scheme of the slider module when the slider handle is dragged...
+// javascript will add in the data attribure 'slide'
+
+body .slider-module[data-state="slide"]{
+
+	.title-container{
+
+		.title-choose{
+			color: $pinkDrk;
+		}
+
+		.title-your{
+			background-color: rgba($pink, 0.3);
+			@include transform(scale(1.2));
+		}
+
+		.title-budget{
+			color: rgba($pink, 0.8);
+			@include text-shadow(3px 3px 0 rgba($pinkDrk, 0.5));
+		}
+	}
+
+	.slider-container{
+
+		.ui-slider-range{
+			background: $pink;
+		}
+
+		.ui-slider-handle{
+			background: $pink;
+			border: 2px solid $pinkDrk;
+			behavior: url(PIE-1.0.0/PIE.htc);
+
+			&:after{
+				border: 2px solid $pinkDrk;
+			}
+		}
+	}
+
+	.slider-options{
+
+		&.slide{
+
+			span{
+				color: $pink;
+			}
+		}
+
+		li{
+			color: $pinkDrk;
+
+			&.active{
+				color: $pink !important;
+			}
+		}
+	}
+
+	.price-container{
+
+		.footer{
+			color: $pinkDrk;
+		}
+
+		.bg{
+			background: $pink;
+			border: 2px solid $pinkDrk;
+		}
+	}
+
+} // end of [data-state="slide"]

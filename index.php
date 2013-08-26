@@ -12,12 +12,15 @@
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/ht5bp.css">
+        <link type="text/css" rel="stylesheet" href="css/normalize.css">
+        <link type="text/css" rel="stylesheet" href="css/ht5bp.css">
 		<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+		<link type="text/css" rel="stylesheet" href="css/jquery.jqplot.min.css" />
 		<link type="text/css" rel="stylesheet" href="css/main.css">
+		<!--[if lt IE 9]><link type="text/css" rel="stylesheet" href="css/ie.css"><![endif]-->
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
+
     <body>
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
@@ -59,6 +62,7 @@
 							<span class="dollar">$</span><span class="number">300</span><span class="nzd">nzd</span>
 						</div>
 						<span class="footer">To spend per day</span>
+						<div class="bg"></div>
 					</div>
 
 				</div> <!-- end of content -->
@@ -72,6 +76,8 @@
 					<h3>best beaches</h3>
 
 					<div class="slideshow-image">
+
+						<div class="info-icon"></div>
 
 						<div class="image-clip">
 
@@ -131,52 +137,26 @@
 
 					<div class="chart-container clear-fix">
 
-						<div class="pie-chart pie-1">
-							<h3>Bangkok</h3>
+						<!-- <span class="price">$113.10</span> -->
 
-							<div class="chart-container">
-								<span class="price">$113.10</span>
-								<canvas width="200" height="200"></canvas>
-								<!--[if lte IE 8]>
-									<script src="excanvas.js"></script>
-								<![endif]-->
-							</div>
+						<div class="pie-chart pie-1">
+							<h3>pie chart one</h3>
+							<div class="jqplot-container"></div>
 						</div>
 
 						<div class="pie-chart pie-2">
-							<h3>Bangkok</h3>
-
-							<div class="chart-container">
-								<span class="price">$113.10</span>
-								<canvas width="200" height="200"></canvas>
-								<!--[if lte IE 8]>
-									<script src="excanvas.js"></script>
-								<![endif]-->
-							</div>
+							<h3>pie chart two</h3>
+							<div class="jqplot-container"></div>
 						</div>
 
 						<div class="pie-chart pie-3">
-							<h3>Bangkok</h3>
-
-							<div class="chart-container">
-								<span class="price">$113.10</span>
-								<canvas width="200" height="200"></canvas>
-								<!--[if lte IE 8]>
-									<script src="excanvas.js"></script>
-								<![endif]-->
-							</div>
+							<h3>pie chart three</h3>
+							<div class="jqplot-container"></div>
 						</div>
 
 						<div class="pie-chart pie-4">
-							<h3>Bangkok</h3>
-
-							<div class="chart-container">
-								<span class="price">$113.10</span>
-								<canvas width="200" height="200"></canvas>
-								<!--[if lte IE 8]>
-									<script src="excanvas.js"></script>
-								<![endif]-->
-							</div>
+							<h3>pie chart four</h3>
+							<div class="jqplot-container"></div>
 						</div>
 
 					</div>
@@ -190,11 +170,15 @@
 		<!-- place holder for mockup -->
 		</div> <!-- end of stuff-shell -->
 
+		<!--[if lt IE 9]><script language="javascript" type="text/javascript" src="js/vendor/excanvas.min.js"></script><![endif]-->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
         <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.10.1/TweenMax.min.js"></script>
-        <script src="js/vendor/Chart.min.js"></script>
+        <!--<script src="js/vendor/Chart.min.js"></script>-->
+        <script language="javascript" type="text/javascript" src="js/vendor/jquery.jqplot.min.js"></script>
+        <script language="javascript" type="text/javascript" src="js/vendor/jqplot.donutRenderer.min.js"></script>
+        <script language="javascript" type="text/javascript" src="js/vendor/jqplot.highlighter.min.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
 
